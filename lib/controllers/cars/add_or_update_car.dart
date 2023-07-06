@@ -2,12 +2,11 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
-import 'package:sayaratech/models/car.dart';
-import 'package:sayaratech/controllers/tokens/refresh_token.dart';
-import 'package:sayaratech/models/which_home.dart';
-import 'package:sayaratech/pages/home/home.dart';
-import '../../models/authentication.dart';
-import '../../pages/cars/my_cars_screen.dart';
+import '../../../models/car.dart';
+import '../../controllers/tokens/refresh_token.dart';
+import '../../../models/which_home.dart';
+import '../../pages/home/home.dart';
+import '../../../models/authentication.dart';
 import '../internet/check_internet.dart';
 
 /// Add customer or update a car, If token expired refresh it without asking customer credentials

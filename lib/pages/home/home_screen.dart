@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-import 'package:sayaratech/ui_manager/colors_manager.dart';
-import 'package:sayaratech/ui_manager/fixed_numbers_manager.dart';
-import 'package:sayaratech/ui_manager/sized_box_manager.dart';
-import 'package:sayaratech/ui_manager/widgets/buttons/custom_button.dart';
+import '../../../ui_manager/fixed_numbers_manager.dart';
+import '../../../ui_manager/widgets/buttons/custom_button.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

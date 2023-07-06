@@ -1,22 +1,18 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sayaratech/ui_manager/widgets/profile_single_row.dart';
-
-import '../../../ui_manager/colors_manager.dart';
-import '../../../ui_manager/fixed_numbers_manager.dart';
-import '../../../ui_manager/sized_box_manager.dart';
-import '../../../ui_manager/themes/dark_theme.dart';
-import '../../../ui_manager/themes/light_theme.dart';
+import '../../../ui_manager/widgets/profile_single_row.dart';
+import '../../../../ui_manager/colors_manager.dart';
+import '../../../../ui_manager/fixed_numbers_manager.dart';
+import '../../../../ui_manager/sized_box_manager.dart';
+import '../../../../ui_manager/themes/dark_theme.dart';
+import '../../../../ui_manager/themes/light_theme.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
     log(Get.locale.toString());
     return Scaffold(
       appBar: AppBar(

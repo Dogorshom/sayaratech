@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sayaratech/models/authentication.dart';
-import 'package:sayaratech/pages/authentication/login_screen.dart';
+import '../../../models/authentication.dart';
+import '../../pages/authentication/login_screen.dart';
 import '../../controllers/authentication/sign_up/sign_up_first_step.dart';
-import '../../ui_manager/colors_manager.dart';
-import '../../ui_manager/fixed_numbers_manager.dart';
-import '../../ui_manager/sized_box_manager.dart';
-import '../../ui_manager/widgets/buttons/custom_button.dart';
-import '../../ui_manager/widgets/overlays/loading_overlay.dart';
-import '../../ui_manager/widgets/text_field_container.dart';
+import '../../../ui_manager/colors_manager.dart';
+import '../../../ui_manager/fixed_numbers_manager.dart';
+import '../../../ui_manager/sized_box_manager.dart';
+import '../../../ui_manager/widgets/buttons/custom_button.dart';
+import '../../../ui_manager/widgets/overlays/loading_overlay.dart';
+import '../../../ui_manager/widgets/text_field_container.dart';
 
 class SignUpScreen extends StatelessWidget {
   final bool x = false;
@@ -16,7 +16,7 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double height = Get.height;
+    // double height = Get.height;
     double width = Get.width;
     var authenticationVars = Get.put(Authentication());
     return Stack(

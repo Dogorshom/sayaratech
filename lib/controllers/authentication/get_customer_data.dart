@@ -1,9 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:get/get.dart';
-import '../../../models/authentication.dart';
-import '../../../pages/authentication/verify_phone_screen.dart';
-
+import '../../../../models/authentication.dart';
 import 'package:http/http.dart' as http;
 import '../internet/check_internet.dart';
 import 'package:shared_preferences/shared_preferences.dart';

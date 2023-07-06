@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sayaratech/models/car.dart';
-import 'package:sayaratech/ui_manager/sized_box_manager.dart';
-import 'package:sayaratech/ui_manager/widgets/text_field_container.dart';
+import '../../../models/car.dart';
+import '../../../ui_manager/sized_box_manager.dart';
+import '../../../ui_manager/widgets/text_field_container.dart';
 
 import '../../../controllers/cars/get_cars_vendors.dart';
-import '../../../ui_manager/fixed_numbers_manager.dart';
+import '../../../../ui_manager/fixed_numbers_manager.dart';
 
 class CarVendorTextField extends StatelessWidget {
   final String? initData;

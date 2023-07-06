@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sayaratech/models/car.dart';
-import 'package:sayaratech/ui_manager/extensions_manager.dart';
-import 'package:sayaratech/ui_manager/sized_box_manager.dart';
-import 'package:sayaratech/ui_manager/widgets/text_field_container.dart';
+import '../../../models/car.dart';
+import '../../../ui_manager/extensions_manager.dart';
+import '../../../ui_manager/sized_box_manager.dart';
+import '../../../ui_manager/widgets/text_field_container.dart';
 
-import '../../../controllers/cars/get_car_colors.dart';
-import '../../../ui_manager/fixed_numbers_manager.dart';
+import '../../../controllers/cars/get_car_fuel_type.dart';
+import '../../../../ui_manager/fixed_numbers_manager.dart';
 
-class AvailableColorsTextField extends StatelessWidget {
-  const AvailableColorsTextField({super.key});
+class CarFuelTypeTextField extends StatelessWidget {
+  const CarFuelTypeTextField({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,20 +20,20 @@ class AvailableColorsTextField extends StatelessWidget {
             return Column(
               children: [
                 TextField(
-                  controller: content.carColorsController["controller"]!.value,
+                  controller: content.carFuelController["controller"]!.value,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                      hintText: "Color: black, red, white..",
+                      hintText: "Fuel Type: Diesel, Gasoline, ..",
                       suffixIcon: InkWell(
                         onTap: () {
-                          content.isSearchingForCarColors.value =
-                              !content.isSearchingForCarColors.value;
-                          if (content.isSearchingForCarColors.value) {
-                            getAllColorsAvailable();
+                          content.isSearchingForCarFuel.value =
+                              !content.isSearchingForCarFuel.value;
+                          if (content.isSearchingForCarFuel.value) {
+                            getAllCarFuels();
                           }
                         },
                         child: Icon(
-                          content.isSearchingForCarColors.value
+                          content.isSearchingForCarFuel.value
                               ? Icons.keyboard_arrow_up_rounded
                               : Icons.keyboard_arrow_down_rounded,
                           size: 24,
@@ -41,43 +41,44 @@ class AvailableColorsTextField extends StatelessWidget {
                       )),
                   style: Get.textTheme.bodyMedium,
                   onTap: () {
-                    if (!content.isSearchingForCarColors.value) {
-                      content.isSearchingForCarColors.value = true;
+                    if (!content.isSearchingForCarFuel.value) {
+                      content.isSearchingForCarFuel.value = true;
                     }
-                    getAllColorsAvailable();
+                    getAllCarFuels();
                   },
                   onChanged: (v) async {
-                    if (!content.isSearchingForCarColors.value) {
-                      content.isSearchingForCarColors.value = true;
+                    if (!content.isSearchingForCarFuel.value) {
+                      content.isSearchingForCarFuel.value = true;
                     }
-                    getAllColorsAvailable();
+                    getAllCarFuels();
                   },
                 ),
                 ConstrainedBox(
                   constraints: const BoxConstraints(maxHeight: 200),
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 300),
-                    height: content.isSearchingForCarColors.value
-                        ? content.specificResForCarColors.length * 43
+                    height: content.isSearchingForCarFuel.value
+                        ? content.specificResForCarFuel.length * 43
                         : 0,
                     child: ListView.builder(
-                        itemCount: content.specificResForCarColors.length,
+                        itemCount: content.specificResForCarFuel.length,
                         itemBuilder: (_, index) {
                           return InkWell(
                             onTap: () {
-                              content.carColorsController["controller"]!.value
-                                  .text = content.specificResForCarColors[index]
-                                      ["name"]!
+                              print(content.specificResForCarFuel.toString());
+                              content.carFuelController["controller"]!.value
+                                  .text = content.specificResForCarFuel[index]
+                                      ["name"]
                                   .toString()
                                   .firstLetterCapitalize();
-                              content.carColorsController["id"]!.value =
-                                  content.specificResForCarColors[index]["id"];
-                              content.isSearchingForCarColors.value = false;
-                              content.carColorsController["controller"]!.value
+                              content.carFuelController["id"]!.value =
+                                  content.specificResForCarFuel[index]["id"];
+                              content.isSearchingForCarFuel.value = false;
+                              content.carFuelController["controller"]!.value
                                       .selection =
                                   TextSelection.collapsed(
                                       offset: content
-                                          .carColorsController["controller"]!
+                                          .carFuelController["controller"]!
                                           .value
                                           .text
                                           .length);
@@ -88,14 +89,13 @@ class AvailableColorsTextField extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(content.specificResForCarColors[index]
-                                          ["name"]!
+                                  Text(content.specificResForCarFuel[index]
+                                          ["name"]
                                       .toString()
                                       .firstLetterCapitalize()),
                                   fixedSizedBoxHeight,
                                   index ==
-                                          content.specificResForCarColors
-                                                  .length -
+                                          content.specificResForCarFuel.length -
                                               1
                                       ? Container()
                                       : Divider(

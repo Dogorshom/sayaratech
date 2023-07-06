@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sayaratech/controllers/cars/get_one_car.dart';
-import 'package:sayaratech/models/car.dart';
-import 'package:sayaratech/controllers/cars/add_or_update_car.dart';
-import 'package:sayaratech/pages/cars/widgets/available_color_text_field.dart';
-import 'package:sayaratech/pages/cars/widgets/car_cylinder_text_field.dart';
-import 'package:sayaratech/pages/cars/widgets/car_fuel_type.dart';
-import 'package:sayaratech/pages/cars/widgets/car_model_text_field.dart';
-import 'package:sayaratech/pages/cars/widgets/car_vendors_text_field.dart';
-import 'package:sayaratech/pages/cars/widgets/date_of_production.dart';
-import 'package:sayaratech/ui_manager/colors_manager.dart';
-import 'package:sayaratech/ui_manager/fixed_numbers_manager.dart';
-import 'package:sayaratech/ui_manager/sized_box_manager.dart';
-import 'package:sayaratech/ui_manager/widgets/buttons/custom_button.dart';
-import 'package:sayaratech/ui_manager/widgets/text_field_container.dart';
-
-import '../../ui_manager/widgets/overlays/loading_overlay.dart';
+import '../../controllers/cars/get_one_car.dart';
+import '../../../models/car.dart';
+import '../../controllers/cars/add_or_update_car.dart';
+import 'widgets/available_color_text_field.dart';
+import 'widgets/car_cylinder_text_field.dart';
+import 'widgets/car_fuel_type.dart';
+import 'widgets/car_model_text_field.dart';
+import 'widgets/car_vendors_text_field.dart';
+import 'widgets/date_of_production.dart';
+import '../../../ui_manager/colors_manager.dart';
+import '../../../ui_manager/fixed_numbers_manager.dart';
+import '../../../ui_manager/sized_box_manager.dart';
+import '../../../ui_manager/widgets/buttons/custom_button.dart';
+import '../../../ui_manager/widgets/text_field_container.dart';
+import '../../../ui_manager/widgets/overlays/loading_overlay.dart';
+import 'widgets/available_color_text_field.dart';
 
 class AddOrUpdateCarsScreen extends StatelessWidget {
   final bool? isUpdate;

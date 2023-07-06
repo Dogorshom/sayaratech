@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:get/get.dart';
-import 'package:sayaratech/pages/home/home.dart';
-import '../../../models/authentication.dart';
+import '../../../pages/home/home.dart';
+import '../../../../models/authentication.dart';
 import '../../internet/check_internet.dart';
 import 'package:http/http.dart' as http;
 import '../get_customer_data.dart';

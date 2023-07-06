@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
 import 'package:get/route_manager.dart';
-import 'package:sayaratech/models/which_home.dart';
-import 'package:sayaratech/pages/my_reservations_screen.dart';
-import 'package:sayaratech/pages/cars/my_cars_screen.dart';
-import 'package:sayaratech/pages/profile/profile_screen.dart';
-import 'package:sayaratech/ui_manager/colors_manager.dart';
-import 'package:sayaratech/ui_manager/fixed_numbers_manager.dart';
+import '../../../models/which_home.dart';
+import '../../pages/my_reservations_screen.dart';
+import '../../pages/profile/profile_screen.dart';
+import '../../../ui_manager/colors_manager.dart';
+import '../../../ui_manager/fixed_numbers_manager.dart';
 
+import '../my_cars/my_cars_screen.dart';
 import 'home_screen.dart';
 
 class Home extends StatelessWidget {

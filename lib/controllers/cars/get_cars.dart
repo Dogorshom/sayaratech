@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import '../../models/authentication.dart';
-import '../../models/car.dart';
+import '../../../models/authentication.dart';
+import '../../../models/car.dart';
 import '../internet/check_internet.dart';
 import '../tokens/refresh_token.dart';
 

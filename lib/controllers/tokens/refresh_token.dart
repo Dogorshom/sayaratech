@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../models/authentication.dart';
+import '../../../models/authentication.dart';
 
 Future<bool> refreshToken() async {
   Authentication authVars = Get.put(Authentication());

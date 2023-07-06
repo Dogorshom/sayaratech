@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sayaratech/controllers/authentication/login/login_second_step.dart';
-import 'package:sayaratech/models/authentication.dart';
-import 'package:sayaratech/ui_manager/fixed_numbers_manager.dart';
-import 'package:sayaratech/ui_manager/sized_box_manager.dart';
-import 'package:sayaratech/ui_manager/widgets/buttons/custom_button.dart';
-import 'package:sayaratech/ui_manager/widgets/text_field_container.dart';
+import '../../controllers/authentication/login/login_second_step.dart';
+import '../../../models/authentication.dart';
+import '../../../ui_manager/fixed_numbers_manager.dart';
+import '../../../ui_manager/sized_box_manager.dart';
+import '../../../ui_manager/widgets/buttons/custom_button.dart';
+import '../../../ui_manager/widgets/text_field_container.dart';
 
 import '../../controllers/authentication/sign_up/sign_up_second_step.dart';
-import '../../ui_manager/widgets/overlays/loading_overlay.dart';
+import '../../../ui_manager/widgets/overlays/loading_overlay.dart';
 
 class VerifyPhoneNumberScreen extends StatelessWidget {
   final bool isForLogin;

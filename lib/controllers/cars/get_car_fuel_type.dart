@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../../models/car.dart';
+import '../../../models/car.dart';
 
 getAllCarFuels() async {
   Car carVars = Get.put(Car());

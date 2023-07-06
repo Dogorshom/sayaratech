@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sayaratech/controllers/cars/get_cars.dart';
-import 'package:sayaratech/pages/cars/add_or_update_cars_screen.dart';
-import 'package:sayaratech/ui_manager/colors_manager.dart';
-import 'package:sayaratech/ui_manager/fixed_numbers_manager.dart';
-import 'package:sayaratech/ui_manager/sized_box_manager.dart';
-import 'package:sayaratech/ui_manager/widgets/buttons/custom_button.dart';
-import 'package:sayaratech/ui_manager/widgets/cards/car_card.dart';
-import '../../models/car.dart';
+import '../../controllers/cars/get_cars.dart';
+import 'add_or_update_cars_screen.dart';
+import '../../../ui_manager/colors_manager.dart';
+import '../../../ui_manager/fixed_numbers_manager.dart';
+import '../../../ui_manager/sized_box_manager.dart';
+import '../../../ui_manager/widgets/buttons/custom_button.dart';
+import '../../../ui_manager/widgets/cards/car_card.dart';
+import '../../../models/car.dart';
 
 class MyCarsScreen extends StatelessWidget {
   const MyCarsScreen({super.key});

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sayaratech/models/authentication.dart';
-import 'package:sayaratech/ui_manager/colors_manager.dart';
-import 'package:sayaratech/ui_manager/fixed_numbers_manager.dart';
-import 'package:sayaratech/ui_manager/sized_box_manager.dart';
-import 'package:sayaratech/ui_manager/widgets/text_field_container.dart';
+import '../../../models/authentication.dart';
+import '../../../ui_manager/colors_manager.dart';
+import '../../../ui_manager/fixed_numbers_manager.dart';
+import '../../../ui_manager/sized_box_manager.dart';
+import '../../../ui_manager/widgets/text_field_container.dart';
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});

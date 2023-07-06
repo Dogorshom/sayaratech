@@ -4,11 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:sayaratech/pages/home/home.dart';
-import 'package:sayaratech/ui_manager/colors_manager.dart';
-import '../../models/authentication.dart';
-import '../../models/car.dart';
-import '../../models/which_home.dart';
+import '../../../ui_manager/colors_manager.dart';
+import '../../../models/authentication.dart';
+import '../../../models/car.dart';
 import '../internet/check_internet.dart';
 import '../tokens/refresh_token.dart';
 

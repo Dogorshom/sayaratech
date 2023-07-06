@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sayaratech/controllers/cars/get_car_models.dart';
-import 'package:sayaratech/models/car.dart';
-import 'package:sayaratech/ui_manager/colors_manager.dart';
-import 'package:sayaratech/ui_manager/sized_box_manager.dart';
-import 'package:sayaratech/ui_manager/widgets/text_field_container.dart';
-import '../../../ui_manager/fixed_numbers_manager.dart';
+import '../../../controllers/cars/get_car_cylinder.dart';
+import '../../../models/car.dart';
+import '../../../ui_manager/sized_box_manager.dart';
+import '../../../ui_manager/widgets/text_field_container.dart';
+import '../../../../ui_manager/fixed_numbers_manager.dart';
 
-class CarModelTextField extends StatelessWidget {
-  final String? initData;
-  const CarModelTextField({super.key, this.initData});
+class CarCylinderTextField extends StatelessWidget {
+  const CarCylinderTextField({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +18,7 @@ class CarModelTextField extends StatelessWidget {
           builder: (content) {
             return Column(
               children: [
-                Obx(() => carVars.isSearchingForCarModel.value
+                Obx(() => carVars.isSearchingForCarCylinder.value
                     ? const Padding(
                         padding:
                             EdgeInsets.symmetric(horizontal: fixedMainPadding),
@@ -29,26 +27,23 @@ class CarModelTextField extends StatelessWidget {
                       )
                     : Container()),
                 TextField(
-                  controller: content.carModelController["controller"]!.value,
+                  controller:
+                      content.carCylinderController["controller"]!.value,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                      hintText: initData ?? "Car Model: sonata, tucson, ..",
+                      hintText: "Car Cylinder: 4, 5, ..",
                       suffixIcon: InkWell(
                         onTap: () {
-                          content.carModelController["controller"]!.value.text =
-                              "";
-                          content.carCylinderController["controller"]!.value
-                              .text = "";
-                          content.isSearchingForCarModel.value =
-                              !content.isSearchingForCarModel.value;
-                          if (content.isSearchingForCarModel.value) {
-                            getAllCarModels(
-                                vendorIdForUrl:
-                                    content.carVendorController["id"]!.value);
+                          content.isSearchingForCarCylinder.value =
+                              !content.isSearchingForCarCylinder.value;
+                          if (content.isSearchingForCarCylinder.value) {
+                            getAllCarCylinders(
+                                cylinderlId:
+                                    content.carModelController["id"]!.value);
                           }
                         },
                         child: Icon(
-                          content.isSearchingForCarModel.value
+                          content.isSearchingForCarCylinder.value
                               ? Icons.keyboard_arrow_up_rounded
                               : Icons.keyboard_arrow_down_rounded,
                           size: 24,
@@ -56,54 +51,52 @@ class CarModelTextField extends StatelessWidget {
                       )),
                   style: Get.textTheme.bodyMedium,
                   onTap: () {
-                    content.carModelController["controller"]!.value.text = "";
-                    content.carCylinderController["controller"]!.value.text =
-                        "";
-                    if (!content.isSearchingForCarModel.value) {
-                      content.isSearchingForCarModel.value = true;
+                    if (!content.isSearchingForCarCylinder.value) {
+                      content.isSearchingForCarCylinder.value = true;
                     }
                     print("This is passed");
-                    print(content.carVendorController["id"]!.value.toString());
-                    getAllCarModels(
-                        vendorIdForUrl:
-                            content.carVendorController["id"]!.value);
+                    print(content.carModelController["id"]!.value.toString());
+                    getAllCarCylinders(
+                        cylinderlId: content.carModelController["id"]!.value);
                   },
                   onChanged: (v) async {
-                    if (!content.isSearchingForCarModel.value) {
-                      content.isSearchingForCarModel.value = true;
+                    if (!content.isSearchingForCarCylinder.value) {
+                      content.isSearchingForCarCylinder.value = true;
                     }
-                    getAllCarModels(
-                        vendorIdForUrl:
-                            content.carVendorController["id"]!.value);
-                    content.carCylinderController["controller"]!.value.text =
-                        "";
+                    getAllCarCylinders(
+                        cylinderlId: content.carModelController["id"]!.value);
                   },
                 ),
                 ConstrainedBox(
                   constraints: const BoxConstraints(maxHeight: 200),
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 400),
-                    height: content.isSearchingForCarModel.value
-                        ? content.specificResForCarModels.length * 43
+                    height: content.isSearchingForCarCylinder.value
+                        ? content.specificResForCarCylinders.length * 43
                         : 0,
                     child: ListView.builder(
-                        itemCount: content.specificResForCarModels.length,
+                        itemCount: content.specificResForCarCylinders.length,
                         itemBuilder: (_, index) {
+                          print("object");
+                          print(content.specificResForCarCylinders.length
+                              .toString());
                           return InkWell(
                             onTap: () {
-                              content.carModelController["controller"]!.value!
-                                  .text = content.specificResForCarModels[index]
-                                      ["name"]!
-                                  .toString()
-                                  .capitalizeFirst!;
-                              content.carModelController["id"]!.value =
-                                  content.specificResForCarModels[index]["id"]!;
-                              content.isSearchingForCarModel.value = false;
-                              content.carModelController["controller"]!.value
+                              content.carCylinderController["controller"]!
+                                      .value!.text =
+                                  content.specificResForCarCylinders[index]
+                                          ["name"]!
+                                      .toString()
+                                      .capitalizeFirst!;
+                              content.carCylinderController["id"]!.value =
+                                  content.specificResForCarCylinders[index]
+                                      ["id"];
+                              content.isSearchingForCarCylinder.value = false;
+                              content.carCylinderController["controller"]!.value
                                       .selection =
                                   TextSelection.collapsed(
                                       offset: content
-                                          .carModelController["controller"]!
+                                          .carCylinderController["controller"]!
                                           .value
                                           .text
                                           .length);
@@ -114,13 +107,13 @@ class CarModelTextField extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(content.specificResForCarModels[index]
+                                  Text(content.specificResForCarCylinders[index]
                                           ["name"]!
                                       .toString()
                                       .capitalizeFirst!),
                                   fixedSizedBoxHeight,
                                   index ==
-                                          content.specificResForCarModels
+                                          content.specificResForCarCylinders
                                                   .length -
                                               1
                                       ? Container()

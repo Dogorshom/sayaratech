@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:sayaratech/models/authentication.dart';
+import '../../../models/authentication.dart';
 
 ///Check if phone number, email, and password are valid
 ///

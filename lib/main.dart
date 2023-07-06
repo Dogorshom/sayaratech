@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/route_manager.dart';
-import 'package:sayaratech/models/authentication.dart';
-import 'package:sayaratech/pages/authentication/login_screen.dart';
-import 'package:sayaratech/pages/home/home.dart';
-import 'package:sayaratech/pages/profile/sub_pages/edit_profile_screen.dart';
+import '../../../models/authentication.dart';
+import '../../pages/authentication/login_screen.dart';
+import '../../pages/home/home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'controllers/language/languages.dart';
 import 'ui_manager/themes/dark_theme.dart';

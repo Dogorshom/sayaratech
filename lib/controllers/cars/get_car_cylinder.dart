@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import '../../models/car.dart';
+import '../../../models/car.dart';
 import '../internet/check_internet.dart';
 
 Future getAllCarCylinders({int? cylinderlId}) async {

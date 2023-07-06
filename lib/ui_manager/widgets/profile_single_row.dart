@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sayaratech/ui_manager/colors_manager.dart';
+import '../../../ui_manager/colors_manager.dart';
 
 import '../fixed_numbers_manager.dart';
 import '../sized_box_manager.dart';

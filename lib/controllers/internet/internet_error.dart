@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../ui_manager/colors_manager.dart';
+import '../../../ui_manager/colors_manager.dart';
 
 ///Show internet error to the user
 internetErrorOverlay({bool isTimeOut = false}) {
