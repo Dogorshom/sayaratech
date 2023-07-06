@@ -58,6 +58,13 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   fixedSmallSizedBoxHeight,
+                  Center(
+                    child: Text(
+                      "Accepted Format: 5xxxxxxxx",
+                      style: Get.textTheme.bodySmall,
+                    ),
+                  ),
+                  fixedSmallSizedBoxHeight,
                   TextFieldContainer(
                     child: TextField(
                       controller: registerVars.phoneNumberController.value,
@@ -75,39 +82,6 @@ class LoginScreen extends StatelessWidget {
                       },
                     ),
                   ),
-                  // fixedSizedBoxHeight,
-                  // fixedSizedBoxHeight,
-                  // GetX<Authentication>(builder: (_) {
-                  //   return TextFieldContainer(
-                  //     child: TextField(
-                  //       controller: registerVars.passwordController.value,
-                  //       obscureText: registerVars.hiddenPasswordLogin.value,
-                  //       decoration: InputDecoration(
-                  //           hintText: "Password",
-                  //           prefixIcon: Icon(
-                  //             Icons.lock_outline_rounded,
-                  //             color: secondaryColor,
-                  //           ),
-                  //           suffixIcon: IconButton(
-                  //             icon: !registerVars.hiddenPasswordLogin.value
-                  //                 ? Icon(
-                  //                     Icons.visibility_outlined,
-                  //                     color: secondaryColor,
-                  //                   )
-                  //                 : const Icon(Icons.visibility_off_outlined),
-                  //             onPressed: () {
-                  //               registerVars.hiddenPasswordLogin.value =
-                  //                   !registerVars.hiddenPasswordLogin.value;
-                  //             },
-                  //           )),
-                  //       onChanged: (v) {
-                  //         if (registerVars.errorMessageInLogin.value != "") {
-                  //           registerVars.errorMessageInLogin.value = "";
-                  //         }
-                  //       },
-                  //     ),
-                  //   );
-                  // }),
                   fixedSmallSizedBoxHeight,
                   Obx(() => registerVars.errorMessageInLogin.value != ""
                       ? Text(
@@ -116,21 +90,12 @@ class LoginScreen extends StatelessWidget {
                               .copyWith(color: redColor),
                         )
                       : Container()),
-                  // fixedSizedBoxHeight,
-                  // Align(
-                  //   alignment: Alignment.centerRight,
-                  //   child: InkWell(
-                  //     child: const Text("Forgot Password?"),
-                  //     onTap: () {
-                  //       // Get.to(() => const ForgotPasswordScreen());
-                  //     },
-                  //   ),
-                  // ),
                   fixedSizedBoxHeightBy5,
                   CustomButton(
                     text: "Send Code",
                     width: Get.width,
                     onTap: () async {
+                      FocusScope.of(context).unfocus();
                       await loginFirstStep();
                     },
                   ),
@@ -142,6 +107,7 @@ class LoginScreen extends StatelessWidget {
                       const Text("Don't have an account? "),
                       InkWell(
                         onTap: () {
+                          FocusScope.of(context).unfocus();
                           Get.to(() => const SignUpScreen());
                         },
                         child: Text("Register Now",

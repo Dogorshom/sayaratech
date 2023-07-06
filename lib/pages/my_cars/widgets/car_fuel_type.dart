@@ -65,6 +65,7 @@ class CarFuelTypeTextField extends StatelessWidget {
                         itemBuilder: (_, index) {
                           return InkWell(
                             onTap: () {
+                              FocusScope.of(context).unfocus();
                               print(content.specificResForCarFuel.toString());
                               content.carFuelController["controller"]!.value
                                   .text = content.specificResForCarFuel[index]

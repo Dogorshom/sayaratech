@@ -154,11 +154,6 @@ class ProfileScreen extends StatelessWidget {
                                                                   const Duration(
                                                                       seconds:
                                                                           2));
-                                                          // ScaffoldMessenger.of(
-                                                          //         context)
-                                                          //     .showSnackBar(SnackBar(
-                                                          //         content: Text(
-                                                          //             "Code Copied")));
                                                         });
                                                       },
                                                       child: Icon(
@@ -249,7 +244,6 @@ class ProfileScreen extends StatelessWidget {
                                   divider: false,
                                   onTap: () async {
                                     await logout();
-                                    // getCustomerProfile();
                                   },
                                 ),
                               ],

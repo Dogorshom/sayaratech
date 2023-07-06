@@ -26,6 +26,9 @@ class AvailableColorsTextField extends StatelessWidget {
                       hintText: "Color: black, red, white..",
                       suffixIcon: InkWell(
                         onTap: () {
+                          content.scrollController.value.animateTo(100,
+                              curve: Curves.easeOut,
+                              duration: const Duration(seconds: 1));
                           content.isSearchingForCarColors.value =
                               !content.isSearchingForCarColors.value;
                           if (content.isSearchingForCarColors.value) {
@@ -44,6 +47,9 @@ class AvailableColorsTextField extends StatelessWidget {
                     if (!content.isSearchingForCarColors.value) {
                       content.isSearchingForCarColors.value = true;
                     }
+                    content.scrollController.value.animateTo(100,
+                        curve: Curves.easeOut,
+                        duration: const Duration(seconds: 1));
                     getAllColorsAvailable();
                   },
                   onChanged: (v) async {
@@ -65,6 +71,7 @@ class AvailableColorsTextField extends StatelessWidget {
                         itemBuilder: (_, index) {
                           return InkWell(
                             onTap: () {
+                              FocusScope.of(context).unfocus();
                               content.carColorsController["controller"]!.value
                                   .text = content.specificResForCarColors[index]
                                       ["name"]!

@@ -50,6 +50,7 @@ class SignUpScreen extends StatelessWidget {
                   TextFieldContainer(
                     child: TextField(
                       controller: authenticationVars.nameController.value,
+                      keyboardType: TextInputType.name,
                       decoration: InputDecoration(
                           hintText: "Name",
                           prefixIcon: Icon(
@@ -69,6 +70,7 @@ class SignUpScreen extends StatelessWidget {
                     child: TextField(
                       controller:
                           authenticationVars.phoneNumberController.value,
+                      keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
                           hintText: "Phone Number",
                           prefixIcon: Icon(
@@ -87,6 +89,7 @@ class SignUpScreen extends StatelessWidget {
                   TextFieldContainer(
                     child: TextField(
                       controller: authenticationVars.emailController.value,
+                      keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                           hintText: "Email",
                           prefixIcon: Icon(

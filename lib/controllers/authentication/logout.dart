@@ -33,6 +33,7 @@ logout() async {
             SharedPreferences sharedPreferences =
                 await SharedPreferences.getInstance();
             sharedPreferences.clear();
+            Get.deleteAll();
             Get.to(() => const LoginScreen());
           },
           // textColor: ,

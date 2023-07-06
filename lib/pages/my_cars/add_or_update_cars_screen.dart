@@ -15,7 +15,6 @@ import '../../../ui_manager/sized_box_manager.dart';
 import '../../../ui_manager/widgets/buttons/custom_button.dart';
 import '../../../ui_manager/widgets/text_field_container.dart';
 import '../../../ui_manager/widgets/overlays/loading_overlay.dart';
-import 'widgets/available_color_text_field.dart';
 
 class AddOrUpdateCarsScreen extends StatelessWidget {
   final bool? isUpdate;
@@ -58,8 +57,10 @@ class AddOrUpdateCarsScreen extends StatelessWidget {
             width: Get.width,
             color: Get.theme.scaffoldBackgroundColor,
             child: SingleChildScrollView(
+              controller: addCarVariables.scrollController.value,
               child: InkWell(
                 onTap: () {
+                  FocusScope.of(context).unfocus();
                   if (addCarVariables.isSearchingForCarVendor.value) {
                     addCarVariables.isSearchingForCarVendor.value = false;
                   }
@@ -105,9 +106,9 @@ class AddOrUpdateCarsScreen extends StatelessWidget {
                         child: TextField(
                           controller:
                               addCarVariables.licenseNumberController.value,
+                          keyboardType: TextInputType.number,
                           decoration: InputDecoration(
                             hintText: "Car License Number",
-                            isDense: true,
                             suffixIcon: IconButton(
                               onPressed: () {},
                               icon: Icon(
@@ -127,6 +128,7 @@ class AddOrUpdateCarsScreen extends StatelessWidget {
                                 child: TextField(
                               controller: addCarVariables
                                   .carPlateNumberController.value,
+                              keyboardType: TextInputType.number,
                               textAlign: TextAlign.center,
                               decoration: const InputDecoration(
                                 hintText: "Plate Number",
@@ -141,6 +143,7 @@ class AddOrUpdateCarsScreen extends StatelessWidget {
                               controller: addCarVariables
                                   .carPlateCharactersController.value,
                               textAlign: TextAlign.center,
+                              keyboardType: TextInputType.text,
                               decoration: const InputDecoration(
                                 hintText: "Plate Characters",
                               ),
@@ -171,7 +174,9 @@ class AddOrUpdateCarsScreen extends StatelessWidget {
                           },
                           text: isUpdate != null && isUpdate == true
                               ? "Update"
-                              : "Confirm")
+                              : "Confirm"),
+                      fixedSizedBoxHeight,
+                      fixedSizedBoxHeight,
                     ],
                   ),
                 ),

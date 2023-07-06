@@ -25,6 +25,9 @@ class DateOfProductionTextField extends StatelessWidget {
                       hintText: "Production Date: 2019, 2020, ..",
                       suffixIcon: InkWell(
                         onTap: () {
+                          content.scrollController.value.animateTo(150,
+                              curve: Curves.easeOut,
+                              duration: const Duration(seconds: 1));
                           content.isSearchingForDateOfProduction.value =
                               !content.isSearchingForDateOfProduction.value;
                           if (content.isSearchingForDateOfProduction.value) {
@@ -40,6 +43,9 @@ class DateOfProductionTextField extends StatelessWidget {
                       )),
                   style: Get.textTheme.bodyMedium,
                   onTap: () {
+                    content.scrollController.value.animateTo(150,
+                        curve: Curves.easeOut,
+                        duration: const Duration(seconds: 1));
                     if (!content.isSearchingForDateOfProduction.value) {
                       content.isSearchingForDateOfProduction.value = true;
                     }
@@ -65,6 +71,7 @@ class DateOfProductionTextField extends StatelessWidget {
                         itemBuilder: (_, index) {
                           return InkWell(
                             onTap: () {
+                              FocusScope.of(context).unfocus();
                               content.dateOfProductionController.value.text =
                                   content
                                       .specificResForDateOfProduction[index]!;

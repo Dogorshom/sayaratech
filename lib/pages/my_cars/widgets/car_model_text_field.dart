@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../controllers/cars/get_car_models.dart';
 import '../../../models/car.dart';
+import '../../../ui_manager/colors_manager.dart';
 import '../../../ui_manager/sized_box_manager.dart';
 import '../../../ui_manager/widgets/text_field_container.dart';
 import '../../../../ui_manager/fixed_numbers_manager.dart';
@@ -20,11 +21,14 @@ class CarModelTextField extends StatelessWidget {
             return Column(
               children: [
                 Obx(() => carVars.isSearchingForCarModel.value
-                    ? const Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: fixedMainPadding),
+                    ? Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: fixedMainPadding),
                         child: SizedBox(
-                            height: 1, child: LinearProgressIndicator()),
+                            height: 1,
+                            child: LinearProgressIndicator(
+                              color: primaryColor,
+                            )),
                       )
                     : Container()),
                 TextField(
@@ -90,6 +94,7 @@ class CarModelTextField extends StatelessWidget {
                         itemBuilder: (_, index) {
                           return InkWell(
                             onTap: () {
+                              FocusScope.of(context).unfocus();
                               content.carModelController["controller"]!.value!
                                   .text = content.specificResForCarModels[index]
                                       ["name"]!

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:get/get.dart';
+import 'package:sayaratech/models/which_home.dart';
 import '../../../controllers/authentication/get_customer_data.dart';
 import '../../../pages/home/home.dart';
 import '../../../../models/authentication.dart';
@@ -31,6 +32,8 @@ Future loginSecondStep() async {
     if (dataRecieved["status"] != null && dataRecieved["status"] == true) {
       authVars.bearerToken.value = dataRecieved["Data"];
       await getCustomerProfile().then((value) {
+        WhichHome whichHome = Get.put(WhichHome());
+        whichHome.whichPage.value = "HomeScreen";
         Get.to(() => const Home());
       });
     } else {

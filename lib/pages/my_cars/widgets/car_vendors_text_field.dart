@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../ui_manager/colors_manager.dart';
 import '../../../models/car.dart';
 import '../../../ui_manager/sized_box_manager.dart';
 import '../../../ui_manager/widgets/text_field_container.dart';
-
 import '../../../controllers/cars/get_cars_vendors.dart';
 import '../../../../ui_manager/fixed_numbers_manager.dart';
 
@@ -21,11 +21,15 @@ class CarVendorTextField extends StatelessWidget {
             return Column(
               children: [
                 Obx(() => carVars.isSearchingForCarVendor.value
-                    ? const Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: fixedMainPadding),
+                    ? Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: fixedMainPadding),
                         child: SizedBox(
-                            height: 1, child: LinearProgressIndicator()),
+                          height: 1,
+                          child: LinearProgressIndicator(
+                            color: primaryColor,
+                          ),
+                        ),
                       )
                     : Container()),
                 TextField(
@@ -79,7 +83,9 @@ class CarVendorTextField extends StatelessWidget {
                 ConstrainedBox(
                   constraints: const BoxConstraints(maxHeight: 200),
                   child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 400),
+                    duration: Duration(
+                        milliseconds:
+                            content.isSearchingForCarVendor.value ? 4000 : 100),
                     height: content.isSearchingForCarVendor.value
                         ? content.specificResForCarVendors.length * 43
                         : 0,
@@ -88,6 +94,7 @@ class CarVendorTextField extends StatelessWidget {
                         itemBuilder: (_, index) {
                           return InkWell(
                             onTap: () {
+                              FocusScope.of(context).unfocus();
                               content.carVendorController["controller"]!.value
                                       .text =
                                   content.specificResForCarVendors[index]

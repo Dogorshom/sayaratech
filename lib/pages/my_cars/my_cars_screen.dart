@@ -14,6 +14,7 @@ class MyCarsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(Car());
     return Scaffold(
       body: Column(
         children: [
@@ -33,6 +34,7 @@ class MyCarsScreen extends StatelessWidget {
                       onPressed: () {
                         //reset all data
                         Get.delete<Car>();
+                        Get.put(Car()).isRunGetCarsFunction.value = true;
                         Get.to(() => const AddOrUpdateCarsScreen());
                       },
                       icon: Icon(
@@ -55,58 +57,58 @@ class MyCarsScreen extends StatelessWidget {
           ),
           Expanded(
             child: GetX<Car>(
-                init: Car(),
+                // init: Car(),
                 builder: (content) {
-                  if (!content.isRunGetCarsFunction.value) {
-                    getCars();
-                    return Center(
-                        child: CircularProgressIndicator(
-                      color: primaryColor,
-                      backgroundColor: secondaryColor,
-                    ));
-                  } else if (content.carsList.isEmpty) {
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "You don't have cars!\nAdd one now",
-                          textAlign: TextAlign.center,
-                          style: Get.textTheme.bodyLarge,
-                        ),
-                        fixedSizedBoxHeight,
-                        fixedSizedBoxHeight,
-                        CustomButton(
-                          text: "Add Car",
-                          onTap: () {
-                            //reset all data
-                            Get.delete<Car>();
-                            Get.to(() => const AddOrUpdateCarsScreen());
-                          },
-                        )
-                      ],
-                    );
-                  } else {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: fixedMainPadding * 2),
-                      child: ListView.builder(
-                          itemCount: content.carsList.length,
-                          itemBuilder: ((_, index) {
-                            return Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: fixedPadding),
-                              child: CarCard(
-                                car: content.carsList[index],
-                                carIndexInList: index,
-                              ),
-                            );
-                          })),
-                    );
-                  }
-                }),
+              if (!content.isRunGetCarsFunction.value) {
+                getCars();
+                return Center(
+                    child: CircularProgressIndicator(
+                  color: primaryColor,
+                  backgroundColor: secondaryColor,
+                ));
+              }
+              if (content.carsList.isEmpty) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "You don't have cars!\nAdd one now",
+                      textAlign: TextAlign.center,
+                      style: Get.textTheme.bodyLarge,
+                    ),
+                    fixedSizedBoxHeight,
+                    fixedSizedBoxHeight,
+                    CustomButton(
+                      text: "Add Car",
+                      onTap: () {
+                        //reset all data
+                        Get.delete<Car>();
+                        Get.put(Car()).isRunGetCarsFunction.value = true;
+                        Get.to(() => const AddOrUpdateCarsScreen());
+                      },
+                    )
+                  ],
+                );
+              } else {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: fixedMainPadding * 2),
+                  child: ListView.builder(
+                      itemCount: content.carsList.length,
+                      itemBuilder: ((_, index) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: fixedPadding),
+                          child: CarCard(
+                            car: content.carsList[index],
+                            carIndexInList: index,
+                          ),
+                        );
+                      })),
+                );
+              }
+            }),
           ),
-          fixedSizedBoxHeight,
-          fixedSizedBoxHeight,
         ],
       ),
     );

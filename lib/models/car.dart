@@ -53,6 +53,7 @@ class Car extends GetxController {
   RxList<String?> specificResForDateOfProduction = <String?>[].obs;
   Rx<bool> isLoading = false.obs;
   RxList<Car> carsList = <Car>[].obs;
+  Rx<ScrollController> scrollController = ScrollController().obs;
   final int? carId;
   final String? carVendorName;
   final int? carVendorId;

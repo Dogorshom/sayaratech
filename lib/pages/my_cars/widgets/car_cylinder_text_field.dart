@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../controllers/cars/get_car_cylinder.dart';
 import '../../../models/car.dart';
+import '../../../ui_manager/colors_manager.dart';
 import '../../../ui_manager/sized_box_manager.dart';
 import '../../../ui_manager/widgets/text_field_container.dart';
 import '../../../../ui_manager/fixed_numbers_manager.dart';
@@ -19,17 +20,20 @@ class CarCylinderTextField extends StatelessWidget {
             return Column(
               children: [
                 Obx(() => carVars.isSearchingForCarCylinder.value
-                    ? const Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: fixedMainPadding),
+                    ? Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: fixedMainPadding),
                         child: SizedBox(
-                            height: 1, child: LinearProgressIndicator()),
+                            height: 1,
+                            child: LinearProgressIndicator(
+                              color: primaryColor,
+                            )),
                       )
                     : Container()),
                 TextField(
                   controller:
                       content.carCylinderController["controller"]!.value,
-                  keyboardType: TextInputType.text,
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                       hintText: "Car Cylinder: 4, 5, ..",
                       suffixIcon: InkWell(
@@ -82,6 +86,7 @@ class CarCylinderTextField extends StatelessWidget {
                               .toString());
                           return InkWell(
                             onTap: () {
+                              FocusScope.of(context).unfocus();
                               content.carCylinderController["controller"]!
                                       .value!.text =
                                   content.specificResForCarCylinders[index]

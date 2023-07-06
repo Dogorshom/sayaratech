@@ -21,7 +21,7 @@ class VerifyPhoneNumberScreen extends StatelessWidget {
       children: [
         Scaffold(
           appBar: AppBar(
-            title: Text("Verify Your Phone"),
+            title: const Text("Verify Your Phone"),
           ),
           body: SafeArea(
             child: Padding(
@@ -52,6 +52,7 @@ class VerifyPhoneNumberScreen extends StatelessWidget {
                   CustomButton(
                     text: "Verify",
                     onTap: () async {
+                      FocusScope.of(context).unfocus();
                       isForLogin
                           ? await loginSecondStep()
                           : await signUpSecondStep();
