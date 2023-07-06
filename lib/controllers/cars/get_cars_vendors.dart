@@ -23,20 +23,23 @@ Future getAllCarVendors() async {
     Map dataRecieved = jsonDecode(response.body);
     log(dataRecieved.toString());
 
-    for (int i = 0; i < dataRecieved["Data"].length; i++) {
-      vendors.add(dataRecieved["Data"][i]);
-    }
-    print("This is vendors ${vendors.toString()}");
-    carVars.specificResForCarVendors.clear();
-    for (Map element in vendors) {
-      String vendorId = element["id"].toString();
-      String vendorName = element["eng_name"];
-      vendorName = vendorName.toLowerCase();
-      if (vendorName.contains(carVars
-          .carVendorController["controller"]!.value.text
-          .toLowerCase())) {
-        carVars.specificResForCarVendors
-            .add({"id": vendorId, "name": vendorName});
+    if (dataRecieved["status"] != null && dataRecieved["status"] == true) {
+      for (int i = 0; i < dataRecieved["Data"].length; i++) {
+        vendors.add(dataRecieved["Data"][i]);
+      }
+      print("This is vendors ${vendors.toString()}");
+      carVars.specificResForCarVendors.clear();
+      for (Map element in vendors) {
+        int vendorId = element["id"];
+        String vendorName =
+            element[Get.locale!.languageCode == 'en' ? "eng_name" : "name"];
+        vendorName = vendorName.toLowerCase();
+        if (vendorName.contains(carVars
+            .carVendorController["controller"]!.value.text
+            .toLowerCase())) {
+          carVars.specificResForCarVendors
+              .add({"id": vendorId, "name": vendorName});
+        }
       }
     }
     if (carVars.specificResForCarVendors.isEmpty) {

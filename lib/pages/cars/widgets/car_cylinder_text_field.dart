@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sayaratech/controllers/cars/get_car_cylinder.dart';
-import 'package:sayaratech/controllers/cars/get_cars_models.dart';
+import 'package:sayaratech/controllers/cars/get_car_models.dart';
 import 'package:sayaratech/models/car.dart';
 import 'package:sayaratech/ui_manager/sized_box_manager.dart';
 import 'package:sayaratech/ui_manager/widgets/text_field_container.dart';
@@ -41,7 +41,7 @@ class CarCylinderTextField extends StatelessWidget {
                               !content.isSearchingForCarCylinder.value;
                           if (content.isSearchingForCarCylinder.value) {
                             getAllCarCylinders(
-                                modelId:
+                                cylinderlId:
                                     content.carModelController["id"]!.value);
                           }
                         },
@@ -60,14 +60,14 @@ class CarCylinderTextField extends StatelessWidget {
                     print("This is passed");
                     print(content.carModelController["id"]!.value.toString());
                     getAllCarCylinders(
-                        modelId: content.carModelController["id"]!.value);
+                        cylinderlId: content.carModelController["id"]!.value);
                   },
                   onChanged: (v) async {
                     if (!content.isSearchingForCarCylinder.value) {
                       content.isSearchingForCarCylinder.value = true;
                     }
                     getAllCarCylinders(
-                        modelId: content.carModelController["id"]!.value);
+                        cylinderlId: content.carModelController["id"]!.value);
                   },
                 ),
                 ConstrainedBox(
@@ -91,7 +91,9 @@ class CarCylinderTextField extends StatelessWidget {
                                           ["name"]!
                                       .toString()
                                       .capitalizeFirst!;
-
+                              content.carCylinderController["id"]!.value =
+                                  content.specificResForCarCylinders[index]
+                                      ["id"];
                               content.isSearchingForCarCylinder.value = false;
                               content.carCylinderController["controller"]!.value
                                       .selection =

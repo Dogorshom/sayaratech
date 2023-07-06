@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sayaratech/models/car.dart';
+import 'package:sayaratech/ui_manager/extensions_manager.dart';
 import 'package:sayaratech/ui_manager/sized_box_manager.dart';
 import 'package:sayaratech/ui_manager/widgets/text_field_container.dart';
 
+import '../../../controllers/cars/get_car_colors.dart';
 import '../../../ui_manager/fixed_numbers_manager.dart';
 
-class DateOfProductionTextField extends StatelessWidget {
-  const DateOfProductionTextField({super.key});
+class AvailableColorsTextField extends StatelessWidget {
+  const AvailableColorsTextField({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,20 +20,20 @@ class DateOfProductionTextField extends StatelessWidget {
             return Column(
               children: [
                 TextField(
-                  controller: content.dateOfProductionController.value,
+                  controller: content.carColorsController["controller"]!.value,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                      hintText: "Production Date: 2019, 2020, ..",
+                      hintText: "Color: black, red, white..",
                       suffixIcon: InkWell(
                         onTap: () {
-                          content.isSearchingForDateOfProduction.value =
-                              !content.isSearchingForDateOfProduction.value;
-                          if (content.isSearchingForDateOfProduction.value) {
-                            content.getAllYears();
+                          content.isSearchingForCarColors.value =
+                              !content.isSearchingForCarColors.value;
+                          if (content.isSearchingForCarColors.value) {
+                            getAllColorsAvailable();
                           }
                         },
                         child: Icon(
-                          content.isSearchingForDateOfProduction.value
+                          content.isSearchingForCarColors.value
                               ? Icons.keyboard_arrow_up_rounded
                               : Icons.keyboard_arrow_down_rounded,
                           size: 24,
@@ -39,41 +41,46 @@ class DateOfProductionTextField extends StatelessWidget {
                       )),
                   style: Get.textTheme.bodyMedium,
                   onTap: () {
-                    if (!content.isSearchingForDateOfProduction.value) {
-                      content.isSearchingForDateOfProduction.value = true;
+                    if (!content.isSearchingForCarColors.value) {
+                      content.isSearchingForCarColors.value = true;
                     }
-                    content.getAllYears();
+                    getAllColorsAvailable();
                   },
                   onChanged: (v) async {
-                    if (!content.isSearchingForDateOfProduction.value) {
-                      content.isSearchingForDateOfProduction.value = true;
+                    if (!content.isSearchingForCarColors.value) {
+                      content.isSearchingForCarColors.value = true;
                     }
-                    content.getAllYears();
+                    getAllColorsAvailable();
                   },
                 ),
                 ConstrainedBox(
                   constraints: const BoxConstraints(maxHeight: 200),
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 300),
-                    height: content.isSearchingForDateOfProduction.value
-                        ? content.specificResForDateOfProduction.length * 43
+                    height: content.isSearchingForCarColors.value
+                        ? content.specificResForCarColors.length * 43
                         : 0,
                     child: ListView.builder(
-                        itemCount:
-                            content.specificResForDateOfProduction.length,
+                        itemCount: content.specificResForCarColors.length,
                         itemBuilder: (_, index) {
                           return InkWell(
                             onTap: () {
-                              content.dateOfProductionController.value.text =
-                                  content
-                                      .specificResForDateOfProduction[index]!;
-                              content.isSearchingForDateOfProduction.value =
-                                  false;
-                              content.dateOfProductionController.value
+                              content.carColorsController["controller"]!.value
+                                  .text = content.specificResForCarColors[index]
+                                      ["name"]!
+                                  .toString()
+                                  .firstLetterCapitalize();
+                              content.carColorsController["id"]!.value =
+                                  content.specificResForCarColors[index]["id"];
+                              content.isSearchingForCarColors.value = false;
+                              content.carColorsController["controller"]!.value
                                       .selection =
                                   TextSelection.collapsed(
-                                      offset: content.dateOfProductionController
-                                          .value.text.length);
+                                      offset: content
+                                          .carColorsController["controller"]!
+                                          .value
+                                          .text
+                                          .length);
                             },
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
@@ -81,12 +88,13 @@ class DateOfProductionTextField extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(content
-                                      .specificResForDateOfProduction[index]!
-                                      .capitalize!),
+                                  Text(content.specificResForCarColors[index]
+                                          ["name"]!
+                                      .toString()
+                                      .firstLetterCapitalize()),
                                   fixedSizedBoxHeight,
                                   index ==
-                                          content.specificResForDateOfProduction
+                                          content.specificResForCarColors
                                                   .length -
                                               1
                                       ? Container()

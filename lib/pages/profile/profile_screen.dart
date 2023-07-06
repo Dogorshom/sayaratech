@@ -154,7 +154,7 @@ class ProfileScreen extends StatelessWidget {
                                                               duration:
                                                                   const Duration(
                                                                       seconds:
-                                                                          1));
+                                                                          2));
                                                           // ScaffoldMessenger.of(
                                                           //         context)
                                                           //     .showSnackBar(SnackBar(

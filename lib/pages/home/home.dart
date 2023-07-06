@@ -4,7 +4,7 @@ import 'package:get/instance_manager.dart';
 import 'package:get/route_manager.dart';
 import 'package:sayaratech/models/which_home.dart';
 import 'package:sayaratech/pages/my_reservations_screen.dart';
-import 'package:sayaratech/pages/my_cars/my_cars_screen.dart';
+import 'package:sayaratech/pages/cars/my_cars_screen.dart';
 import 'package:sayaratech/pages/profile/profile_screen.dart';
 import 'package:sayaratech/ui_manager/colors_manager.dart';
 import 'package:sayaratech/ui_manager/fixed_numbers_manager.dart';

@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sayaratech/models/car.dart';
+import 'package:sayaratech/ui_manager/extensions_manager.dart';
 import 'package:sayaratech/ui_manager/sized_box_manager.dart';
 import 'package:sayaratech/ui_manager/widgets/text_field_container.dart';
 
+import '../../../controllers/cars/get_car_fuel_type.dart';
 import '../../../ui_manager/fixed_numbers_manager.dart';
 
-class AvailableColorsTextField extends StatelessWidget {
-  const AvailableColorsTextField({super.key});
+class CarFuelTypeTextField extends StatelessWidget {
+  const CarFuelTypeTextField({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,20 +20,20 @@ class AvailableColorsTextField extends StatelessWidget {
             return Column(
               children: [
                 TextField(
-                  controller: content.availableColorsController.value,
+                  controller: content.carFuelController["controller"]!.value,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                      hintText: "Color: black, red, white..",
+                      hintText: "Fuel Type: Diesel, Gasoline, ..",
                       suffixIcon: InkWell(
                         onTap: () {
-                          content.isSearchingForAvailableColors.value =
-                              !content.isSearchingForAvailableColors.value;
-                          if (content.isSearchingForAvailableColors.value) {
-                            content.getAllColorsAvailable();
+                          content.isSearchingForCarFuel.value =
+                              !content.isSearchingForCarFuel.value;
+                          if (content.isSearchingForCarFuel.value) {
+                            getAllCarFuels();
                           }
                         },
                         child: Icon(
-                          content.isSearchingForAvailableColors.value
+                          content.isSearchingForCarFuel.value
                               ? Icons.keyboard_arrow_up_rounded
                               : Icons.keyboard_arrow_down_rounded,
                           size: 24,
@@ -39,39 +41,47 @@ class AvailableColorsTextField extends StatelessWidget {
                       )),
                   style: Get.textTheme.bodyMedium,
                   onTap: () {
-                    if (!content.isSearchingForAvailableColors.value) {
-                      content.isSearchingForAvailableColors.value = true;
+                    if (!content.isSearchingForCarFuel.value) {
+                      content.isSearchingForCarFuel.value = true;
                     }
-                    content.getAllColorsAvailable();
+                    getAllCarFuels();
                   },
                   onChanged: (v) async {
-                    if (!content.isSearchingForAvailableColors.value) {
-                      content.isSearchingForAvailableColors.value = true;
+                    if (!content.isSearchingForCarFuel.value) {
+                      content.isSearchingForCarFuel.value = true;
                     }
-                    content.getAllColorsAvailable();
+                    getAllCarFuels();
                   },
                 ),
                 ConstrainedBox(
                   constraints: const BoxConstraints(maxHeight: 200),
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 300),
-                    height: content.isSearchingForAvailableColors.value
-                        ? content.specificResForAvailableColors.length * 43
+                    height: content.isSearchingForCarFuel.value
+                        ? content.specificResForCarFuel.length * 43
                         : 0,
                     child: ListView.builder(
-                        itemCount: content.specificResForAvailableColors.length,
+                        itemCount: content.specificResForCarFuel.length,
                         itemBuilder: (_, index) {
                           return InkWell(
                             onTap: () {
-                              content.availableColorsController.value.text =
-                                  content.specificResForAvailableColors[index]!;
-                              content.isSearchingForAvailableColors.value =
-                                  false;
-                              content.availableColorsController.value
+                              print(content.specificResForCarFuel.toString());
+                              content.carFuelController["controller"]!.value
+                                  .text = content.specificResForCarFuel[index]
+                                      ["name"]
+                                  .toString()
+                                  .firstLetterCapitalize();
+                              content.carFuelController["id"]!.value =
+                                  content.specificResForCarFuel[index]["id"];
+                              content.isSearchingForCarFuel.value = false;
+                              content.carFuelController["controller"]!.value
                                       .selection =
                                   TextSelection.collapsed(
-                                      offset: content.availableColorsController
-                                          .value.text.length);
+                                      offset: content
+                                          .carFuelController["controller"]!
+                                          .value
+                                          .text
+                                          .length);
                             },
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
@@ -79,13 +89,13 @@ class AvailableColorsTextField extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(content
-                                      .specificResForAvailableColors[index]!
-                                      .capitalize!),
+                                  Text(content.specificResForCarFuel[index]
+                                          ["name"]
+                                      .toString()
+                                      .firstLetterCapitalize()),
                                   fixedSizedBoxHeight,
                                   index ==
-                                          content.specificResForAvailableColors
-                                                  .length -
+                                          content.specificResForCarFuel.length -
                                               1
                                       ? Container()
                                       : Divider(

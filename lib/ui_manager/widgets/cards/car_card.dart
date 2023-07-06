@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
+import 'package:sayaratech/controllers/cars/delete_car.dart';
 import 'package:sayaratech/models/car.dart';
-import 'package:sayaratech/pages/my_cars/add_cars_screen.dart';
+import 'package:sayaratech/pages/cars/add_or_update_cars_screen.dart';
 import 'package:sayaratech/ui_manager/colors_manager.dart';
 import 'package:sayaratech/ui_manager/fixed_numbers_manager.dart';
 import 'package:sayaratech/ui_manager/sized_box_manager.dart';
@@ -10,13 +11,16 @@ import 'package:sayaratech/ui_manager/widgets/buttons/custom_button.dart';
 
 class CarCard extends StatelessWidget {
   final Car car;
+  final int carIndexInList;
   const CarCard({
     super.key,
     required this.car,
+    required this.carIndexInList,
   });
 
   @override
   Widget build(BuildContext context) {
+    Car carLoadingProcess = Get.put(Car());
     return Container(
       // height: Get.height * 0.2,
       width: Get.width,
@@ -25,7 +29,10 @@ class CarCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(fixedBorderRadius),
           border: Border.all(color: blackColor.withOpacity(0.2))),
       child: Padding(
-        padding: const EdgeInsets.all(fixedPadding * 2),
+        padding: const EdgeInsets.only(
+            left: fixedPadding * 2,
+            right: fixedPadding * 2,
+            top: fixedPadding * 2),
         child: Column(
           children: [
             Row(
@@ -75,33 +82,34 @@ class CarCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                InkWell(onTap: () {}, child: const Text("Delete")),
+                InkWell(
+                    onTap: () {
+                      deleteCar(carId: car.carId!, indexInList: carIndexInList);
+                    },
+                    child: const Text("Delete")),
                 CustomButton(
                   text: "Update",
                   onTap: () {
-                    Car carVars = Get.put(Car());
-                    carVars.carVendorController["controller"]!.value.text =
-                        car.carVendorName ?? "";
-                    carVars.carFuelController.value.text = car.carFuel ?? "";
-                    carVars.serialNumberController.value.text =
-                        car.carSerialNumber ?? "";
-                    carVars.carPlateNumberController.value.text =
-                        car.carPlateNumber ?? "";
-                    carVars.carPlateCharactersController.value.text =
-                        car.carPlateCharacters ?? "";
-                    carVars.availableColorsController.value.text =
-                        car.carColor ?? "";
-                    carVars.dateOfProductionController.value.text =
-                        car.carProductionDate ?? "";
-                    Get.to(() => AddCarsScreen(
+                    setCarValuesForUpdate(car: car);
+                    print("iside car card");
+                    print(car.carVendorName.toString());
+                    Get.to(() => AddOrUpdateCarsScreen(
                           isUpdate: true,
-                          idForUpdate: car.carId,
+                          carIdForUpdate: car.carId,
                         ));
                   },
                   width: Get.width * 0.3,
                 )
               ],
             ),
+            fixedSizedBoxHeight,
+            fixedSizedBoxHeight,
+            Obx(() => carLoadingProcess.isLoading.value
+                ? LinearProgressIndicator(
+                    color: primaryColor,
+                    backgroundColor: secondaryColor,
+                  )
+                : Container())
           ],
         ),
       ),
@@ -132,4 +140,22 @@ Widget getCarIcon(String carType) {
     "assets/Icons/sayarahtech_logo.png",
     height: 30,
   );
+}
+
+setCarValuesForUpdate({required Car car}) {
+  Car addCarVars = Get.put(Car());
+  addCarVars.carVendorController["controller"]!.value.text = car.carVendorName;
+  addCarVars.carVendorController["id"]!.value = car.carVendorId;
+  addCarVars.carModelController["controller"]!.value.text = car.carModel;
+  addCarVars.carModelController["id"]!.value = car.carModelId;
+  addCarVars.carColorsController["controller"]!.value.text = car.carColor;
+  addCarVars.carColorsController["id"]!.value = car.carColorId;
+  addCarVars.carFuelController["controller"]!.value.text = car.carFuel;
+  addCarVars.carFuelController["id"]!.value = car.carFuelId;
+  addCarVars.dateOfProductionController.value.text =
+      car.carProductionDate ?? "";
+  addCarVars.carPlateNumberController.value.text = car.carPlateNumber ?? "";
+  addCarVars.carPlateCharactersController.value.text =
+      car.carPlateCharacters ?? "";
+  addCarVars.licenseNumberController.value.text = car.carLicenseNumber ?? "";
 }

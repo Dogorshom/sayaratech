@@ -8,7 +8,8 @@ import '../../../controllers/cars/get_cars_vendors.dart';
 import '../../../ui_manager/fixed_numbers_manager.dart';
 
 class CarVendorTextField extends StatelessWidget {
-  const CarVendorTextField({super.key});
+  final String? initData;
+  const CarVendorTextField({super.key, this.initData});
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +32,15 @@ class CarVendorTextField extends StatelessWidget {
                   controller: content.carVendorController["controller"]!.value,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                      hintText: "Car Type: Kia, Toyota, ..",
+                      hintText: initData ?? "Car Vendor: Kia, Toyota, ..",
                       suffixIcon: InkWell(
                         onTap: () {
+                          content.carVendorController["controller"]!.value
+                              .text = "";
+                          content.carModelController["controller"]!.value.text =
+                              "";
+                          content.carCylinderController["controller"]!.value
+                              .text = "";
                           content.isSearchingForCarVendor.value =
                               !content.isSearchingForCarVendor.value;
                           if (content.isSearchingForCarVendor.value) {
@@ -49,6 +56,11 @@ class CarVendorTextField extends StatelessWidget {
                       )),
                   style: Get.textTheme.bodyMedium,
                   onTap: () {
+                    content.carVendorController["controller"]!.value.text = "";
+                    content.carModelController["controller"]!.value.text = "";
+                    content.carCylinderController["controller"]!.value.text =
+                        "";
+
                     if (!content.isSearchingForCarVendor.value) {
                       content.isSearchingForCarVendor.value = true;
                     }
@@ -60,6 +72,8 @@ class CarVendorTextField extends StatelessWidget {
                     }
                     getAllCarVendors();
                     content.carModelController["controller"]!.value.text = "";
+                    content.carCylinderController["controller"]!.value.text =
+                        "";
                   },
                 ),
                 ConstrainedBox(

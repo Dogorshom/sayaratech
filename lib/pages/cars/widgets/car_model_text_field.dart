@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sayaratech/controllers/cars/get_cars_models.dart';
+import 'package:sayaratech/controllers/cars/get_car_models.dart';
 import 'package:sayaratech/models/car.dart';
+import 'package:sayaratech/ui_manager/colors_manager.dart';
 import 'package:sayaratech/ui_manager/sized_box_manager.dart';
 import 'package:sayaratech/ui_manager/widgets/text_field_container.dart';
-
-import '../../../controllers/cars/get_cars_vendors.dart';
 import '../../../ui_manager/fixed_numbers_manager.dart';
 
 class CarModelTextField extends StatelessWidget {
-  const CarModelTextField({super.key});
+  final String? initData;
+  const CarModelTextField({super.key, this.initData});
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +32,13 @@ class CarModelTextField extends StatelessWidget {
                   controller: content.carModelController["controller"]!.value,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                      hintText: "Car Model: sonata, tucson, ..",
+                      hintText: initData ?? "Car Model: sonata, tucson, ..",
                       suffixIcon: InkWell(
                         onTap: () {
+                          content.carModelController["controller"]!.value.text =
+                              "";
+                          content.carCylinderController["controller"]!.value
+                              .text = "";
                           content.isSearchingForCarModel.value =
                               !content.isSearchingForCarModel.value;
                           if (content.isSearchingForCarModel.value) {
@@ -52,6 +56,9 @@ class CarModelTextField extends StatelessWidget {
                       )),
                   style: Get.textTheme.bodyMedium,
                   onTap: () {
+                    content.carModelController["controller"]!.value.text = "";
+                    content.carCylinderController["controller"]!.value.text =
+                        "";
                     if (!content.isSearchingForCarModel.value) {
                       content.isSearchingForCarModel.value = true;
                     }
@@ -89,9 +96,8 @@ class CarModelTextField extends StatelessWidget {
                                       ["name"]!
                                   .toString()
                                   .capitalizeFirst!;
-                              content.carModelController["id"]!.value = content
-                                  .specificResForCarModels[index]["id"]!
-                                  .toString();
+                              content.carModelController["id"]!.value =
+                                  content.specificResForCarModels[index]["id"]!;
                               content.isSearchingForCarModel.value = false;
                               content.carModelController["controller"]!.value
                                       .selection =

@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import '../../models/car.dart';
 import '../internet/check_internet.dart';
 
-Future getAllCarModels({String? vendorIdForUrl}) async {
+Future getAllCarModels({int? vendorIdForUrl}) async {
   Car carVars = Get.put(Car());
   if (!await hasInternet()) {
     return;

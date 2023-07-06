@@ -4,13 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:sayaratech/pages/home/home.dart';
 import 'package:sayaratech/ui_manager/colors_manager.dart';
 import '../../models/authentication.dart';
 import '../../models/car.dart';
+import '../../models/which_home.dart';
 import '../internet/check_internet.dart';
 import '../tokens/refresh_token.dart';
 
-Future getOneCarDetails({required int carId}) async {
+Future deleteCar({required int carId, required int indexInList}) async {
   Car carVars = Get.put(Car());
   Authentication authVars = Get.put(Authentication());
 
@@ -20,7 +22,7 @@ Future getOneCarDetails({required int carId}) async {
   carVars.isLoading.value = true;
 
   try {
-    Uri url = Uri.parse("https://satc.live/api/Customer/Car/$carId");
+    Uri url = Uri.parse("https://satc.live/api/Customer/DeleteCar?id=$carId");
     Map<String, String> headers = {
       'lng': Get.locale!.languageCode == 'en' ? 'en' : 'ar',
       'Authorization': 'Bearer ${authVars.bearerToken.value}'
@@ -29,41 +31,15 @@ Future getOneCarDetails({required int carId}) async {
     Map dataRecieved = jsonDecode(response.body);
     log(dataRecieved.toString());
     if (dataRecieved["status"] != null && dataRecieved["status"] == true) {
-      Car mycar = Car(
-        carId: dataRecieved["Data"]["id"],
-        carVendorId: dataRecieved["Data"]["Car_Vendor_id"],
-        carModelId: dataRecieved["Data"]["Car_Model_id"],
-        carColorId: dataRecieved["Data"]["Car_Color_id"],
-        carLicenseNumber: dataRecieved["Data"]["Car_Lic_No"].toString(),
-        carPlateNumber:
-            dataRecieved["Data"]["Board_No"].toString().split(" ").first,
-        carPlateCharacters:
-            dataRecieved["Data"]["Board_No"].toString().split(" ").last,
-        cylinderId: dataRecieved["Data"]["Cylinder_id"],
-        // cylinder name not provided by API
-        // cylinder: dataRecieved["Data"]["Cylinder"],
-        carFuelId: dataRecieved["Data"]["Car_Fule_Type_id"],
-        carProductionDate: dataRecieved["Data"]["Model_Year"].toString(),
-        carVendorName: dataRecieved["Data"][Get.locale!.languageCode == 'en'
-            ? "Vendor_egn_name"
-            : "Vendor_name"],
-        carModel: dataRecieved["Data"][Get.locale!.languageCode == 'en'
-            ? "Models_eng_name"
-            : "Models_name"],
-        carColor: dataRecieved["Data"][
-            Get.locale!.languageCode == 'en' ? "color_eng_name" : "color_name"],
-        carFuel: dataRecieved["Data"][Get.locale!.languageCode == 'en'
-            ? "Fule_Type_eng_name"
-            : "Fule_Type_name"],
-      );
+      carVars.carsList.removeAt(indexInList);
+      Get.snackbar(
+          "Successful Operation", "You have successfully delete your car",
+          backgroundColor: greenColor.withOpacity(0.7));
       carVars.isLoading.value = false;
-      Get.defaultDialog(
-          backgroundColor: Get.theme.cardColor,
-          title: "Car Full Details",
-          content: carDetailsColumn(mycar));
     } else {
+      Get.snackbar("Failed Operation", "There is something go wrong",
+          backgroundColor: redColor.withOpacity(0.7));
       carVars.isLoading.value = false;
-      return;
     }
     //This is just for showing that don't have cars added
   } on Exception catch (e) {
@@ -73,7 +49,7 @@ Future getOneCarDetails({required int carId}) async {
     if (e.toString().contains(
         "FormatException: Unexpected end of input (at character 1)")) {
       if (await refreshToken()) {
-        getOneCarDetails(carId: carId);
+        deleteCar(carId: carId, indexInList: indexInList);
       }
     }
     carVars.isLoading.value = false;

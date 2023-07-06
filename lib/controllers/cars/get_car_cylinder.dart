@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import '../../models/car.dart';
 import '../internet/check_internet.dart';
 
-Future getAllCarCylinders({String? modelId}) async {
+Future getAllCarCylinders({int? cylinderlId}) async {
   Car carVars = Get.put(Car());
   if (!await hasInternet()) {
     return;
@@ -14,9 +14,9 @@ Future getAllCarCylinders({String? modelId}) async {
     carVars.isSearchingForCarCylinder.value = true;
   }
   try {
-    print("===============$modelId==============");
+    print("===============$cylinderlId==============");
     Uri url = Uri.parse(
-        "https://satc.live/api/General/Cars/Models/Cylinder/${modelId ?? ""}");
+        "https://satc.live/api/General/Cars/Models/Cylinder/${cylinderlId ?? ""}");
     List<Map> cylinder = [];
     Map<String, String> headers = {
       'lng': Get.locale!.languageCode == 'en' ? 'en' : 'ar',
@@ -29,7 +29,7 @@ Future getAllCarCylinders({String? modelId}) async {
     }
     carVars.specificResForCarCylinders.clear();
     for (Map element in cylinder) {
-      String cylinderId = element["id"].toString();
+      int cylinderId = element["id"];
       String cylinderName = element["name"].toString();
       cylinderName = cylinderName.toLowerCase();
       if (cylinderName.contains(carVars
