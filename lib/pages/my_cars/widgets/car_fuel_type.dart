@@ -29,7 +29,7 @@ class CarFuelTypeTextField extends StatelessWidget {
                           content.isSearchingForCarFuel.value =
                               !content.isSearchingForCarFuel.value;
                           if (content.isSearchingForCarFuel.value) {
-                            getAllCarFuels();
+                            getCarFuelTypes();
                           }
                         },
                         child: Icon(
@@ -44,13 +44,13 @@ class CarFuelTypeTextField extends StatelessWidget {
                     if (!content.isSearchingForCarFuel.value) {
                       content.isSearchingForCarFuel.value = true;
                     }
-                    getAllCarFuels();
+                    getCarFuelTypes();
                   },
                   onChanged: (v) async {
                     if (!content.isSearchingForCarFuel.value) {
                       content.isSearchingForCarFuel.value = true;
                     }
-                    getAllCarFuels();
+                    getCarFuelTypes();
                   },
                 ),
                 ConstrainedBox(

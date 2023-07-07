@@ -48,7 +48,7 @@ class CarVendorTextField extends StatelessWidget {
                           content.isSearchingForCarVendor.value =
                               !content.isSearchingForCarVendor.value;
                           if (content.isSearchingForCarVendor.value) {
-                            getAllCarVendors();
+                            getCarsVendors();
                           }
                         },
                         child: Icon(
@@ -68,13 +68,13 @@ class CarVendorTextField extends StatelessWidget {
                     if (!content.isSearchingForCarVendor.value) {
                       content.isSearchingForCarVendor.value = true;
                     }
-                    getAllCarVendors();
+                    getCarsVendors();
                   },
                   onChanged: (v) async {
                     if (!content.isSearchingForCarVendor.value) {
                       content.isSearchingForCarVendor.value = true;
                     }
-                    getAllCarVendors();
+                    getCarsVendors();
                     content.carModelController["controller"]!.value.text = "";
                     content.carCylinderController["controller"]!.value.text =
                         "";

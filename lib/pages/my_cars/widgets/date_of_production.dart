@@ -19,7 +19,7 @@ class DateOfProductionTextField extends StatelessWidget {
             return Column(
               children: [
                 TextField(
-                  controller: content.dateOfProductionController.value,
+                  controller: content.carProductionDateController.value,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
                       hintText: "Production Date".tr,
@@ -31,7 +31,7 @@ class DateOfProductionTextField extends StatelessWidget {
                           content.isSearchingForDateOfProduction.value =
                               !content.isSearchingForDateOfProduction.value;
                           if (content.isSearchingForDateOfProduction.value) {
-                            getAllYears();
+                            getCarProductionDates();
                           }
                         },
                         child: Icon(
@@ -49,13 +49,13 @@ class DateOfProductionTextField extends StatelessWidget {
                     if (!content.isSearchingForDateOfProduction.value) {
                       content.isSearchingForDateOfProduction.value = true;
                     }
-                    getAllYears();
+                    getCarProductionDates();
                   },
                   onChanged: (v) async {
                     if (!content.isSearchingForDateOfProduction.value) {
                       content.isSearchingForDateOfProduction.value = true;
                     }
-                    getAllYears();
+                    getCarProductionDates();
                   },
                 ),
                 ConstrainedBox(
@@ -72,16 +72,19 @@ class DateOfProductionTextField extends StatelessWidget {
                           return InkWell(
                             onTap: () {
                               FocusScope.of(context).unfocus();
-                              content.dateOfProductionController.value.text =
+                              content.carProductionDateController.value.text =
                                   content
                                       .specificResForDateOfProduction[index]!;
                               content.isSearchingForDateOfProduction.value =
                                   false;
-                              content.dateOfProductionController.value
+                              content.carProductionDateController.value
                                       .selection =
                                   TextSelection.collapsed(
-                                      offset: content.dateOfProductionController
-                                          .value.text.length);
+                                      offset: content
+                                          .carProductionDateController
+                                          .value
+                                          .text
+                                          .length);
                             },
                             child: Padding(
                               padding: const EdgeInsets.symmetric(

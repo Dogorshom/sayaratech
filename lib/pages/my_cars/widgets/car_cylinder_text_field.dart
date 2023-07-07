@@ -41,7 +41,7 @@ class CarCylinderTextField extends StatelessWidget {
                           content.isSearchingForCarCylinder.value =
                               !content.isSearchingForCarCylinder.value;
                           if (content.isSearchingForCarCylinder.value) {
-                            getAllCarCylinders(
+                            getCarCylinders(
                                 cylinderlId:
                                     content.carModelController["id"]!.value);
                           }
@@ -60,14 +60,14 @@ class CarCylinderTextField extends StatelessWidget {
                     }
                     print("This is passed");
                     print(content.carModelController["id"]!.value.toString());
-                    getAllCarCylinders(
+                    getCarCylinders(
                         cylinderlId: content.carModelController["id"]!.value);
                   },
                   onChanged: (v) async {
                     if (!content.isSearchingForCarCylinder.value) {
                       content.isSearchingForCarCylinder.value = true;
                     }
-                    getAllCarCylinders(
+                    getCarCylinders(
                         cylinderlId: content.carModelController["id"]!.value);
                   },
                 ),

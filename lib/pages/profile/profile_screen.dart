@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:sayaratech/models/which_home.dart';
 import 'package:sayaratech/pages/home/home.dart';
-import '../../controllers/authentication/logout.dart';
 import '../../../models/authentication.dart';
 import '../../pages/profile/sub_pages/edit_profile_screen.dart';
 import '../../pages/profile/sub_pages/settings_screen.dart';

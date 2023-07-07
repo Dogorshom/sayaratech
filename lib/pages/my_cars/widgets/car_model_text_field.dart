@@ -45,7 +45,7 @@ class CarModelTextField extends StatelessWidget {
                           content.isSearchingForCarModel.value =
                               !content.isSearchingForCarModel.value;
                           if (content.isSearchingForCarModel.value) {
-                            getAllCarModels(
+                            getCarModels(
                                 vendorIdForUrl:
                                     content.carVendorController["id"]!.value);
                           }
@@ -67,7 +67,7 @@ class CarModelTextField extends StatelessWidget {
                     }
                     print("This is passed");
                     print(content.carVendorController["id"]!.value.toString());
-                    getAllCarModels(
+                    getCarModels(
                         vendorIdForUrl:
                             content.carVendorController["id"]!.value);
                   },
@@ -75,7 +75,7 @@ class CarModelTextField extends StatelessWidget {
                     if (!content.isSearchingForCarModel.value) {
                       content.isSearchingForCarModel.value = true;
                     }
-                    getAllCarModels(
+                    getCarModels(
                         vendorIdForUrl:
                             content.carVendorController["id"]!.value);
                     content.carCylinderController["controller"]!.value.text =

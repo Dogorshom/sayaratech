@@ -4,7 +4,6 @@ import '../../../controllers/authentication/logout.dart';
 import '../../../ui_manager/colors_manager.dart';
 import '../../../ui_manager/fixed_numbers_manager.dart';
 import '../../../ui_manager/widgets/buttons/custom_button.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 logoutDialog() async {
   Get.defaultDialog(

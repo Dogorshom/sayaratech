@@ -153,7 +153,7 @@ setCarValuesForUpdate({required Car car}) {
   addCarVars.carFuelController["id"]!.value = car.carFuelId;
   // addCarVars.carCylinderController["controller"]!.value.text = car.carFuel;
   // addCarVars.carCylinderController["id"]!.value = car.carCylinderController;
-  addCarVars.dateOfProductionController.value.text =
+  addCarVars.carProductionDateController.value.text =
       car.carProductionDate ?? "";
   addCarVars.carPlateNumberController.value.text = car.carPlateNumber ?? "";
   addCarVars.carPlateCharactersController.value.text =

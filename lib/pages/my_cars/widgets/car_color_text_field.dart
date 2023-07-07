@@ -32,7 +32,7 @@ class CarColorsTextField extends StatelessWidget {
                           content.isSearchingForCarColors.value =
                               !content.isSearchingForCarColors.value;
                           if (content.isSearchingForCarColors.value) {
-                            getAllColorsAvailable();
+                            getCarColors();
                           }
                         },
                         child: Icon(
@@ -50,13 +50,13 @@ class CarColorsTextField extends StatelessWidget {
                     content.scrollController.value.animateTo(100,
                         curve: Curves.easeOut,
                         duration: const Duration(seconds: 1));
-                    getAllColorsAvailable();
+                    getCarColors();
                   },
                   onChanged: (v) async {
                     if (!content.isSearchingForCarColors.value) {
                       content.isSearchingForCarColors.value = true;
                     }
-                    getAllColorsAvailable();
+                    getCarColors();
                   },
                 ),
                 ConstrainedBox(
