@@ -22,7 +22,7 @@ class DateOfProductionTextField extends StatelessWidget {
                   controller: content.dateOfProductionController.value,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                      hintText: "Production Date: 2019, 2020, ..",
+                      hintText: "Production Date".tr,
                       suffixIcon: InkWell(
                         onTap: () {
                           content.scrollController.value.animateTo(150,

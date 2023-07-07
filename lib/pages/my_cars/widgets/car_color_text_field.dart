@@ -8,8 +8,8 @@ import '../../../ui_manager/widgets/text_field_container.dart';
 import '../../../controllers/cars/get_car_colors.dart';
 import '../../../../ui_manager/fixed_numbers_manager.dart';
 
-class AvailableColorsTextField extends StatelessWidget {
-  const AvailableColorsTextField({super.key});
+class CarColorsTextField extends StatelessWidget {
+  const CarColorsTextField({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class AvailableColorsTextField extends StatelessWidget {
                   controller: content.carColorsController["controller"]!.value,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                      hintText: "Color: black, red, white..",
+                      hintText: "Car Color".tr,
                       suffixIcon: InkWell(
                         onTap: () {
                           content.scrollController.value.animateTo(100,

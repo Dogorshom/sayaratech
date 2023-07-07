@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import '../../controllers/cars/get_one_car.dart';
 import '../../../models/car.dart';
 import '../../controllers/cars/add_or_update_car.dart';
-import 'widgets/available_color_text_field.dart';
+import 'widgets/car_color_text_field.dart';
 import 'widgets/car_cylinder_text_field.dart';
 import 'widgets/car_fuel_type.dart';
 import 'widgets/car_model_text_field.dart';
@@ -30,7 +30,7 @@ class AddOrUpdateCarsScreen extends StatelessWidget {
         Scaffold(
           appBar: AppBar(
             title: Text(
-              isUpdate! ? "Update Car" : "Add Car",
+              isUpdate! ? "Update Car".tr : "Add Car".tr,
               style: Get.textTheme.titleLarge!.copyWith(color: primaryColor),
             ),
             centerTitle: true,
@@ -84,7 +84,7 @@ class AddOrUpdateCarsScreen extends StatelessWidget {
                       fixedSizedBoxHeight,
                       fixedSizedBoxHeight,
                       Text(
-                        "Required Information",
+                        "Required Information".tr,
                         style: Get.textTheme.titleSmall,
                       ),
                       fixedSizedBoxHeight,
@@ -98,7 +98,7 @@ class AddOrUpdateCarsScreen extends StatelessWidget {
                       fixedSizedBoxHeight,
                       fixedSizedBoxHeight,
                       Text(
-                        "Car Registeration info",
+                        "Car Registeration info".tr,
                         style: Get.textTheme.titleSmall,
                       ),
                       fixedSizedBoxHeight,
@@ -108,7 +108,7 @@ class AddOrUpdateCarsScreen extends StatelessWidget {
                               addCarVariables.licenseNumberController.value,
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(
-                            hintText: "Car License Number",
+                            hintText: "License Number".tr,
                             suffixIcon: IconButton(
                               onPressed: () {},
                               icon: Icon(
@@ -130,8 +130,8 @@ class AddOrUpdateCarsScreen extends StatelessWidget {
                                   .carPlateNumberController.value,
                               keyboardType: TextInputType.number,
                               textAlign: TextAlign.center,
-                              decoration: const InputDecoration(
-                                hintText: "Plate Number",
+                              decoration: InputDecoration(
+                                hintText: "Plate Number".tr,
                               ),
                             )),
                             Image.asset(
@@ -144,8 +144,8 @@ class AddOrUpdateCarsScreen extends StatelessWidget {
                                   .carPlateCharactersController.value,
                               textAlign: TextAlign.center,
                               keyboardType: TextInputType.text,
-                              decoration: const InputDecoration(
-                                hintText: "Plate Characters",
+                              decoration: InputDecoration(
+                                hintText: "Plate Characters".tr,
                               ),
                             )),
                           ],
@@ -154,11 +154,11 @@ class AddOrUpdateCarsScreen extends StatelessWidget {
                       fixedSizedBoxHeight,
                       fixedSizedBoxHeight,
                       Text(
-                        "Additional Information",
+                        "Additional Information".tr,
                         style: Get.textTheme.titleSmall,
                       ),
                       fixedSizedBoxHeight,
-                      const AvailableColorsTextField(),
+                      const CarColorsTextField(),
                       fixedSizedBoxHeight,
                       const DateOfProductionTextField(),
                       fixedSizedBoxHeightBy5,
@@ -173,8 +173,8 @@ class AddOrUpdateCarsScreen extends StatelessWidget {
                             }
                           },
                           text: isUpdate != null && isUpdate == true
-                              ? "Update"
-                              : "Confirm"),
+                              ? "Update".tr
+                              : "Confirm".tr),
                       fixedSizedBoxHeight,
                       fixedSizedBoxHeight,
                     ],

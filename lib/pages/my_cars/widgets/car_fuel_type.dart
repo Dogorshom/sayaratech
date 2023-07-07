@@ -23,7 +23,7 @@ class CarFuelTypeTextField extends StatelessWidget {
                   controller: content.carFuelController["controller"]!.value,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                      hintText: "Fuel Type: Diesel, Gasoline, ..",
+                      hintText: "Fuel Type".tr,
                       suffixIcon: InkWell(
                         onTap: () {
                           content.isSearchingForCarFuel.value =

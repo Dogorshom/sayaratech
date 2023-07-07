@@ -55,7 +55,7 @@ class CustomBottomAppBar extends StatelessWidget {
                       Expanded(
                         flex: 1,
                         child: Text(
-                          "Home",
+                          "Home".tr,
                           style: content.whichPage.value == "HomeScreen"
                               ? Theme.of(context).textTheme.bodySmall!.copyWith(
                                   color: primaryColor,
@@ -97,7 +97,7 @@ class CustomBottomAppBar extends StatelessWidget {
                       Expanded(
                         flex: 1,
                         child: Text(
-                          "Reservations",
+                          "Reservations".tr,
                           style: content.whichPage.value == "Reservations"
                               ? Theme.of(context).textTheme.bodySmall!.copyWith(
                                   color: primaryColor,
@@ -139,7 +139,7 @@ class CustomBottomAppBar extends StatelessWidget {
                       Expanded(
                         flex: 1,
                         child: Text(
-                          "Cars",
+                          "Cars".tr,
                           style: content.whichPage.value == "Cars"
                               ? Theme.of(context).textTheme.bodySmall!.copyWith(
                                   color: primaryColor,
@@ -181,7 +181,7 @@ class CustomBottomAppBar extends StatelessWidget {
                       Expanded(
                         flex: 1,
                         child: Text(
-                          "Profile",
+                          "Profile".tr,
                           style: content.whichPage.value == "Profile"
                               ? Theme.of(context).textTheme.bodySmall!.copyWith(
                                   color: primaryColor,

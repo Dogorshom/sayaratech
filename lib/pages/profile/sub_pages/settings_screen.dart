@@ -47,7 +47,7 @@ class SettingsScreen extends StatelessWidget {
                           Icons.language_outlined,
                           color: primaryColor,
                         ),
-                        title: 'Language',
+                        title: 'Language'.tr,
                         automaticallyTailButton: false,
                         tail: Row(
                           children: [
@@ -122,7 +122,7 @@ class SettingsScreen extends StatelessWidget {
                           Icons.privacy_tip_outlined,
                           color: primaryColor,
                         ),
-                        title: 'Privacy Policy',
+                        title: 'Privacy Policy'.tr,
                         divider: false,
                         automaticallyTailButton: false,
                       ),
@@ -132,7 +132,7 @@ class SettingsScreen extends StatelessWidget {
                 fixedSizedBoxHeight,
                 fixedSizedBoxHeight,
                 Container(
-                  padding: EdgeInsets.all(fixedPadding),
+                  padding: const EdgeInsets.all(fixedPadding),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(fixedBorderRadius),
                       color: Theme.of(context).cardColor,
@@ -148,7 +148,7 @@ class SettingsScreen extends StatelessWidget {
                       Icons.delete,
                       color: redColor,
                     ),
-                    title: 'Delete Account',
+                    title: 'Delete Account'.tr,
                     divider: false,
                     titleColor: redColor,
                     automaticallyTailButton: false,

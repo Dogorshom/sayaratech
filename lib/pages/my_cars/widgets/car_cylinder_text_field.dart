@@ -35,7 +35,7 @@ class CarCylinderTextField extends StatelessWidget {
                       content.carCylinderController["controller"]!.value,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
-                      hintText: "Car Cylinder: 4, 5, ..",
+                      hintText: "Car Cylinder".tr,
                       suffixIcon: InkWell(
                         onTap: () {
                           content.isSearchingForCarCylinder.value =

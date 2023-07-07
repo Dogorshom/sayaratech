@@ -35,7 +35,7 @@ class CarModelTextField extends StatelessWidget {
                   controller: content.carModelController["controller"]!.value,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                      hintText: initData ?? "Car Model: sonata, tucson, ..",
+                      hintText: initData ?? "Car Model".tr,
                       suffixIcon: InkWell(
                         onTap: () {
                           content.carModelController["controller"]!.value.text =

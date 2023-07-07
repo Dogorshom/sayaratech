@@ -11,13 +11,10 @@ import '../../../ui_manager/widgets/overlays/loading_overlay.dart';
 import '../../../ui_manager/widgets/text_field_container.dart';
 
 class LoginScreen extends StatelessWidget {
-  final bool x = false;
   const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // double height = Get.height;
-    double width = Get.width;
     var registerVars = Get.put(Authentication());
     return Stack(
       children: [
@@ -32,35 +29,34 @@ class LoginScreen extends StatelessWidget {
                   fixedSizedBoxHeight,
                   Text.rich(TextSpan(children: [
                     TextSpan(
-                        text: "Sayara Tech",
+                        text: "Sayara Tech".tr,
                         style: Get.textTheme.headlineMedium!
                             .copyWith(color: primaryColor)),
                     TextSpan(
-                        text: ", As Fast As Possible",
+                        text: "As Fast As Possible".tr,
                         style: Get.textTheme.headlineMedium)
                   ])),
                   fixedSizedBoxHeight,
                   fixedSizedBoxHeight,
                   Container(
                     height: 4,
-                    width: width * 0.15,
+                    width: Get.width * 0.15,
                     color: primaryColor,
                   ),
                   fixedSizedBoxHeight,
                   fixedSizedBoxHeight,
-                  const Text(
-                      "Wash your car, change car tires, and more at Home!"),
+                  Text("Services Available".tr),
                   fixedSizedBoxHeightBy5,
                   Center(
                     child: Text(
-                      "We will send code to your phone",
+                      "Send Code Sentence".tr,
                       style: Get.textTheme.bodySmall,
                     ),
                   ),
                   fixedSmallSizedBoxHeight,
                   Center(
                     child: Text(
-                      "Accepted Format: 5xxxxxxxx",
+                      "Accepted Format Sentence".tr,
                       style: Get.textTheme.bodySmall,
                     ),
                   ),
@@ -70,7 +66,7 @@ class LoginScreen extends StatelessWidget {
                       controller: registerVars.phoneNumberController.value,
                       keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
-                          hintText: "Phone number",
+                          hintText: "Phone Number".tr,
                           prefixIcon: Icon(
                             Icons.phone_outlined,
                             color: secondaryColor,
@@ -92,7 +88,7 @@ class LoginScreen extends StatelessWidget {
                       : Container()),
                   fixedSizedBoxHeightBy5,
                   CustomButton(
-                    text: "Send Code",
+                    text: "Send Code".tr,
                     width: Get.width,
                     onTap: () async {
                       FocusScope.of(context).unfocus();
@@ -104,13 +100,13 @@ class LoginScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text("Don't have an account? "),
+                      Text("No Account Sentence".tr),
                       InkWell(
                         onTap: () {
                           FocusScope.of(context).unfocus();
                           Get.to(() => const SignUpScreen());
                         },
-                        child: Text("Register Now",
+                        child: Text("Register Now".tr,
                             style: Get.textTheme.titleSmall!.copyWith(
                                 color: primaryColor,
                                 decoration: TextDecoration.underline)),

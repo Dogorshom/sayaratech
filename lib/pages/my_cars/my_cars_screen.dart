@@ -45,7 +45,7 @@ class MyCarsScreen extends StatelessWidget {
                 ),
                 Center(
                   child: Text(
-                    "My Cars",
+                    "My Cars".tr,
                     style: TextStyle(
                         fontSize: 24,
                         color: whiteColor,
@@ -72,14 +72,14 @@ class MyCarsScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "You don't have cars!\nAdd one now",
+                      "Don't have cars".tr,
                       textAlign: TextAlign.center,
                       style: Get.textTheme.bodyLarge,
                     ),
                     fixedSizedBoxHeight,
                     fixedSizedBoxHeight,
                     CustomButton(
-                      text: "Add Car",
+                      text: "Add Car".tr,
                       onTap: () {
                         //reset all data
                         Get.delete<Car>();

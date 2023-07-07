@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
 import '../../../ui_manager/fixed_numbers_manager.dart';
 import '../../../ui_manager/widgets/buttons/custom_button.dart';
@@ -26,7 +27,7 @@ class HomeScreen extends StatelessWidget {
               child: CustomButton(
                 height: 50,
                 width: Get.width,
-                text: "Select This Place",
+                text: "Select This Place".tr,
               ),
             ))
       ],

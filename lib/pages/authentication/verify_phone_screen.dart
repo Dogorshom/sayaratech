@@ -21,7 +21,7 @@ class VerifyPhoneNumberScreen extends StatelessWidget {
       children: [
         Scaffold(
           appBar: AppBar(
-            title: const Text("Verify Your Phone"),
+            title: Text("Verify Your Phone".tr),
           ),
           body: SafeArea(
             child: Padding(
@@ -30,10 +30,19 @@ class VerifyPhoneNumberScreen extends StatelessWidget {
                 children: [
                   fixedSizedBoxHeight,
                   fixedSizedBoxHeight,
-                  Text(
-                    "We have sent a code to your phone number: ${authVars.phoneNumberController.value.text}",
-                    textAlign: TextAlign.center,
-                    style: Get.textTheme.bodyLarge,
+                  Column(
+                    children: [
+                      Text(
+                        "We Sent Code Sentence".tr,
+                        textAlign: TextAlign.center,
+                        style: Get.textTheme.bodyLarge,
+                      ),
+                      Text(
+                        " ${authVars.phoneNumberController.value.text}",
+                        textAlign: TextAlign.center,
+                        style: Get.textTheme.bodyLarge,
+                      ),
+                    ],
                   ),
                   fixedSizedBoxHeight,
                   fixedSizedBoxHeight,
@@ -45,12 +54,12 @@ class VerifyPhoneNumberScreen extends StatelessWidget {
                     keyboardType: TextInputType.number,
                     style: const TextStyle(letterSpacing: 25),
                     decoration: const InputDecoration(
-                      hintText: " 0 0 0 0",
+                      hintText: "0 0 0 0",
                     ),
                   )),
                   fixedSizedBoxHeightBy5,
                   CustomButton(
-                    text: "Verify",
+                    text: "Verify".tr,
                     onTap: () async {
                       FocusScope.of(context).unfocus();
                       isForLogin

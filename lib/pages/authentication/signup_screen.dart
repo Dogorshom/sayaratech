@@ -32,11 +32,11 @@ class SignUpScreen extends StatelessWidget {
                   fixedSizedBoxHeight,
                   Text.rich(TextSpan(children: [
                     TextSpan(
-                        text: "Sayara Tech",
+                        text: "Sayara Tech".tr,
                         style: Get.textTheme.headlineMedium!
                             .copyWith(color: primaryColor)),
                     TextSpan(
-                        text: ", As Fast As Possible",
+                        text: "As Fast As Possible".tr,
                         style: Get.textTheme.headlineMedium)
                   ])),
                   fixedSizedBoxHeight,
@@ -52,7 +52,7 @@ class SignUpScreen extends StatelessWidget {
                       controller: authenticationVars.nameController.value,
                       keyboardType: TextInputType.name,
                       decoration: InputDecoration(
-                          hintText: "Name",
+                          hintText: "Name".tr,
                           prefixIcon: Icon(
                             Icons.person_outline,
                             color: secondaryColor,
@@ -72,7 +72,7 @@ class SignUpScreen extends StatelessWidget {
                           authenticationVars.phoneNumberController.value,
                       keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
-                          hintText: "Phone Number",
+                          hintText: "Phone Number".tr,
                           prefixIcon: Icon(
                             Icons.phone_outlined,
                             color: secondaryColor,
@@ -91,7 +91,7 @@ class SignUpScreen extends StatelessWidget {
                       controller: authenticationVars.emailController.value,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
-                          hintText: "Email",
+                          hintText: "Email".tr,
                           prefixIcon: Icon(
                             Icons.email_outlined,
                             color: secondaryColor,
@@ -115,7 +115,7 @@ class SignUpScreen extends StatelessWidget {
                             obscureText:
                                 authenticationVars.hiddenPasswordRegister.value,
                             decoration: InputDecoration(
-                                hintText: "Password",
+                                hintText: "Password".tr,
                                 prefixIcon: Icon(
                                   Icons.lock_outline_rounded,
                                   color: secondaryColor,
@@ -154,7 +154,7 @@ class SignUpScreen extends StatelessWidget {
                             obscureText:
                                 authenticationVars.hiddenConfirmPassword.value,
                             decoration: InputDecoration(
-                                hintText: "Confirm Password",
+                                hintText: "Confirm Password".tr,
                                 prefixIcon: Icon(
                                   Icons.lock_outline_rounded,
                                   color: secondaryColor,
@@ -201,7 +201,7 @@ class SignUpScreen extends StatelessWidget {
                   Align(
                     alignment: Alignment.centerRight,
                     child: InkWell(
-                      child: const Text("Can't create account?"),
+                      child: Text("Can't create account?".tr),
                       onTap: () {
                         // Get.to(() => const ForgotPasswordScreen());
                       },
@@ -209,7 +209,7 @@ class SignUpScreen extends StatelessWidget {
                   ),
                   fixedSizedBoxHeightBy5,
                   CustomButton(
-                    text: "Sign Up",
+                    text: "Sign Up".tr,
                     width: Get.width,
                     onTap: () async {
                       await signUpFirstStep();
@@ -220,12 +220,12 @@ class SignUpScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text("Already have account? "),
+                      Text("Already have account? ".tr),
                       InkWell(
                         onTap: () {
                           Get.to(() => const LoginScreen());
                         },
-                        child: Text("Login",
+                        child: Text("Login".tr,
                             style: Get.textTheme.titleSmall!.copyWith(
                                 color: primaryColor,
                                 decoration: TextDecoration.underline)),

@@ -16,7 +16,7 @@ class EditProfileScreen extends StatelessWidget {
     print(authVars.numberOfActiveCars.value);
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Edit Profile"),
+        title: Text("Edit Profile".tr),
         actions: [
           IconButton(onPressed: () {}, icon: const Icon(Icons.edit_outlined))
         ],

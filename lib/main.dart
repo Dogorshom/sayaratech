@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       translations: Languages(),
       fallbackLocale: const Locale('en', 'US'),
       darkTheme: darkThemeData,
-      locale: const Locale('en', 'US'),
+      locale: const Locale('ar', 'SA'),
       title: 'Sayara Tech',
       defaultTransition: Transition.fadeIn,
       theme: lightThemeData,

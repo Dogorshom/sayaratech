@@ -36,7 +36,7 @@ class CarVendorTextField extends StatelessWidget {
                   controller: content.carVendorController["controller"]!.value,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                      hintText: initData ?? "Car Vendor: Kia, Toyota, ..",
+                      hintText: initData ?? "Car Vendor".tr,
                       suffixIcon: InkWell(
                         onTap: () {
                           content.carVendorController["controller"]!.value

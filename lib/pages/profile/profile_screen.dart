@@ -2,6 +2,8 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:sayaratech/models/which_home.dart';
+import 'package:sayaratech/pages/home/home.dart';
 import '../../controllers/authentication/logout.dart';
 import '../../../models/authentication.dart';
 import '../../pages/profile/sub_pages/edit_profile_screen.dart';
@@ -11,7 +13,6 @@ import '../../../ui_manager/fixed_numbers_manager.dart';
 import '../../../ui_manager/sized_box_manager.dart';
 import '../../../ui_manager/widgets/profile_single_row.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -74,7 +75,7 @@ class ProfileScreen extends StatelessWidget {
                                 Get.to(() => const EditProfileScreen());
                               },
                               child: Text(
-                                "Edit Profile",
+                                "Edit Profile".tr,
                                 style: Get.textTheme.titleSmall!
                                     .copyWith(color: primaryColor),
                               )),
@@ -97,8 +98,7 @@ class ProfileScreen extends StatelessWidget {
                                       onTap: () {
                                         final box = context.findRenderObject()
                                             as RenderBox?;
-                                        Share.share(
-                                            "Use this code (193nHaa8) in Sayara Tech, download the app here https://dogorshom.com",
+                                        Share.share("Use this code".tr,
                                             sharePositionOrigin: box!
                                                     .localToGlobal(
                                                         Offset.zero) &
@@ -115,7 +115,7 @@ class ProfileScreen extends StatelessWidget {
                                     child: Column(
                                       children: [
                                         Text(
-                                          "Give this code to you friends\ntake your reward",
+                                          "Give code for friends sentence".tr,
                                           textAlign: TextAlign.center,
                                           style: Get.textTheme.titleSmall,
                                         ),
@@ -199,53 +199,50 @@ class ProfileScreen extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("Profile"),
+                                Text("Profile".tr),
                                 SingleProfileRow(
                                   icon: const Icon(Icons.article_outlined),
-                                  title: "Reservations & Bills",
-                                  onTap: () async {
-                                    SharedPreferences sharedPreferences =
-                                        await SharedPreferences.getInstance();
-                                    print(sharedPreferences
-                                        .getInt("customer_id")!);
-                                    print(sharedPreferences
-                                        .getString("customer_name")!);
-                                    print(sharedPreferences
-                                        .getString("customer_username")!);
-                                    print(sharedPreferences
-                                        .getString("customer_email")!);
-                                    print(sharedPreferences
-                                        .getDouble("customer_wallet_balance")!);
-                                    print(sharedPreferences.getInt(
-                                        "customer_number_of_active_cars")!);
-                                    print(sharedPreferences
-                                        .getString("customer_phone")!);
-                                    print(sharedPreferences
-                                        .getString("customer_latest_token")!);
-                                  },
+                                  title: "Reservations & Bills".tr,
+                                  onTap: () async {},
                                 ),
                                 SingleProfileRow(
                                   icon: const Icon(Icons.car_rental_outlined),
-                                  title: "My Cars",
+                                  title: "My Cars".tr,
                                   onTap: () {
-                                    print(authVars.bearerToken);
+                                    Get.put(WhichHome()).whichPage.value =
+                                        "Cars";
+                                    Get.to(() => Home(
+                                          whichHome: Get.put(WhichHome()),
+                                        ));
                                   },
                                 ),
                                 SingleProfileRow(
                                   icon: const Icon(Icons.settings),
-                                  title: "Settings",
+                                  title: "Settings".tr,
                                   onTap: () {
                                     Get.to(() => const SettingsScreen());
                                   },
                                 ),
                                 SingleProfileRow(
+                                  icon: const Icon(Icons.location_on_outlined),
+                                  title: "Addresses".tr,
+                                  onTap: () {},
+                                ),
+                                SingleProfileRow(
+                                  icon: const Icon(Icons.money),
+                                  title: "CashBack".tr,
+                                  onTap: () {},
+                                ),
+                                SingleProfileRow(
                                   icon: const Icon(Icons.logout),
-                                  title: "Logout",
+                                  title: "Logout".tr,
                                   divider: false,
                                   onTap: () async {
                                     await logout();
                                   },
                                 ),
+                                fixedSizedBoxHeight,
+                                fixedSizedBoxHeight,
                               ],
                             ),
                           ),
