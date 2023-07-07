@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
+import 'package:sayaratech/controllers/cars/get_cars.dart';
 import '../../../models/car.dart';
 import '../../controllers/tokens/refresh_token.dart';
 import '../../../models/which_home.dart';
@@ -48,6 +49,7 @@ Future addOrUpdateCar({int? idForUpdate}) async {
     log(dataRecieved.toString());
     if (dataRecieved["status"] != null && dataRecieved["status"] == true) {
       //If success then go to my cars screen
+      getCars();
       var whichHome = Get.put(WhichHome());
       whichHome.whichPage.value = "Cars";
       Get.to(() => const Home());

@@ -32,12 +32,13 @@ Future getAllCarModels({int? vendorIdForUrl}) async {
     carVars.specificResForCarModels.clear();
     for (Map element in models) {
       int recievedVendorId = element["id"];
-      String vendorName = element["eng_name"];
-      vendorName = vendorName.toLowerCase();
-      if (vendorName.contains(
+      String modelName =
+          element[Get.locale!.languageCode == 'en' ? "eng_name" : "name"];
+      modelName = modelName.toLowerCase();
+      if (modelName.contains(
           carVars.carModelController["controller"]!.value.text.toLowerCase())) {
         carVars.specificResForCarModels
-            .add({"id": recievedVendorId, "name": vendorName});
+            .add({"id": recievedVendorId, "name": modelName});
       }
     }
     if (carVars.specificResForCarModels.isEmpty) {
