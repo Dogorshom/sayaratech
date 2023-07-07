@@ -92,7 +92,7 @@ class SettingsScreen extends StatelessWidget {
                               : Icons.dark_mode_outlined,
                           color: primaryColor,
                         ),
-                        title: 'Dark Mode',
+                        title: 'Dark Mode'.tr,
                         automaticallyTailButton: false,
                         tail: SizedBox(
                           height: 20,
