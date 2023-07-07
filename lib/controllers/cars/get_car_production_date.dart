@@ -1,10 +1,11 @@
 import 'package:get/get.dart';
-
 import '../../../models/car.dart';
 
+///Get all years available list
 getAllYears() async {
+  //get all car variables
   Car carVars = Get.put(Car());
-
+  //All years list
   List<String> allyears = [
     "2023",
     "2022",
@@ -21,12 +22,15 @@ getAllYears() async {
     "2011",
     "2010",
   ];
+  //Clear list before refreshing the list
   carVars.specificResForDateOfProduction.clear();
-  for (String element in allyears) {
-    element = element.toLowerCase();
-    if (element.contains(
+  //Start loop to add years in the list
+  for (String year in allyears) {
+    year = year.toLowerCase();
+    //If year contains the entered string add it to the list
+    if (year.contains(
         carVars.dateOfProductionController.value.text.toLowerCase())) {
-      carVars.specificResForDateOfProduction.add(element.toLowerCase());
+      carVars.specificResForDateOfProduction.add(year.toLowerCase());
     }
   }
   if (carVars.specificResForDateOfProduction.isEmpty) {

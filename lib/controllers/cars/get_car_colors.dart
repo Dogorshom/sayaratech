@@ -1,9 +1,11 @@
 import 'package:get/get.dart';
-
 import '../../../models/car.dart';
 
+///Get all colors available list
 getAllColorsAvailable() async {
+  //get all car variables
   Car carVars = Get.put(Car());
+  //Colors map that linking colors and Ids
   List<Map<String, dynamic>> colorsMap = [
     {"id": 1, "name": "ابيض ", "eng_name": "White"},
     {"id": 2, "name": "اسود", "eng_name": "Black"},
@@ -16,16 +18,18 @@ getAllColorsAvailable() async {
     {"id": 9, "name": "ازرق", "eng_name": "Blue"},
     {"id": 11, "name": "زيتي", "eng_name": "Bright Green"}
   ];
-  // List<String> allColors = ["Yellow", "Red", "Green", "Grey", "White", "Black"];
+  //Clear list before refreshing the list
   carVars.specificResForCarColors.clear();
-  for (Map<String, dynamic> element in colorsMap) {
-    int id = element["id"];
-    element["name"] =
-        element[Get.locale!.languageCode == 'en' ? "eng_name" : "name"]
+  //Start loop to add colors in the list
+  for (Map<String, dynamic> color in colorsMap) {
+    color["name"] =
+        color[Get.locale!.languageCode == 'en' ? "eng_name" : "name"]
             .toLowerCase();
-    if (element["name"].contains(
+    //If color name contains the entered string add it to the list
+    if (color["name"].contains(
         carVars.carColorsController["controller"]!.value.text.toLowerCase())) {
-      carVars.specificResForCarColors.add({"id": id, "name": element["name"]});
+      carVars.specificResForCarColors
+          .add({"id": color["id"], "name": color["name"]});
     }
   }
   if (carVars.specificResForCarColors.isEmpty) {

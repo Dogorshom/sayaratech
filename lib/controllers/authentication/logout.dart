@@ -1,45 +1,15 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../pages/authentication/login_screen.dart';
-import '../../../ui_manager/colors_manager.dart';
-import '../../../ui_manager/fixed_numbers_manager.dart';
-import '../../../ui_manager/widgets/buttons/custom_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+///Logout from the application and wipe data
 logout() async {
-  Get.defaultDialog(
-    backgroundColor: primaryColor,
-    title: "Logout",
-    content: const Text(
-      "You are going to logout from the application, Are you sure you want to logout?",
-      textAlign: TextAlign.center,
-    ),
-    confirm: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        TextButton(
-          child: Text(
-            "Cancel",
-            style: Get.textTheme.titleSmall!.copyWith(color: whiteColor),
-          ),
-          onPressed: () {
-            Get.back();
-          },
-        ),
-        CustomButton(
-          text: "Logout",
-          backgroundColor: redColor,
-          onTap: () async {
-            SharedPreferences sharedPreferences =
-                await SharedPreferences.getInstance();
-            sharedPreferences.clear();
-            Get.deleteAll();
-            Get.to(() => const LoginScreen());
-          },
-          // textColor: ,
-        ),
-      ],
-    ),
-    contentPadding: const EdgeInsets.all(fixedPadding),
-  );
+  //Shared preferences to delete local data
+  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  //Delete all local data
+  sharedPreferences.clear();
+  //Delete all 'Get' package data
+  Get.deleteAll();
+  //Go directly to Login screen
+  Get.to(() => const LoginScreen());
 }
