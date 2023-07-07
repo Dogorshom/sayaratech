@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import '../../../models/car.dart';
 
 ///Get all car fuels types list
-getAllCarFuels() async {
+getCarFuelTypes() async {
   //get all car variables
   Car carVars = Get.put(Car());
   //Fuels map that linking fule type with Ids

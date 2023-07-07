@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import '../../../models/car.dart';
 
 ///Get all years available list
-getAllYears() async {
+getCarProductionDates() async {
   //get all car variables
   Car carVars = Get.put(Car());
   //All years list
@@ -29,7 +29,7 @@ getAllYears() async {
     year = year.toLowerCase();
     //If year contains the entered string add it to the list
     if (year.contains(
-        carVars.dateOfProductionController.value.text.toLowerCase())) {
+        carVars.carProductionDateController.value.text.toLowerCase())) {
       carVars.specificResForDateOfProduction.add(year.toLowerCase());
     }
   }

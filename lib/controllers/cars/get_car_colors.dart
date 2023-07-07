@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import '../../../models/car.dart';
 
 ///Get all colors available list
-getAllColorsAvailable() async {
+getCarColors() async {
   //get all car variables
   Car carVars = Get.put(Car());
   //Colors map that linking colors and Ids

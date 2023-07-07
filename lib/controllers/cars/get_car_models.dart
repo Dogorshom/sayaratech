@@ -6,7 +6,7 @@ import '../../../models/car.dart';
 import '../internet/check_internet.dart';
 
 /// Get all car models for specific car vendor
-Future getAllCarModels({int? vendorIdForUrl}) async {
+Future getCarModels({int? vendorIdForUrl}) async {
   //get all car variables
   Car carVars = Get.put(Car());
   //Check internet access before begining

@@ -46,7 +46,7 @@ Future addOrUpdateCar({int? idForUpdate}) async {
       "Car_Models_Engine_id":
           addCarVars.carCylinderController["id"]!.value.toString(),
       "Car_Fule_Type_id": addCarVars.carFuelController["id"]!.value.toString(),
-      "Model_Year": addCarVars.dateOfProductionController.value.text,
+      "Model_Year": addCarVars.carProductionDateController.value.text,
       "Board_No":
           "${addCarVars.carPlateNumberController.value.text} ${addCarVars.carPlateCharactersController.value.text}",
       "Car_Lic_No": addCarVars.licenseNumberController.value.text,

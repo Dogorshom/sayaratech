@@ -6,7 +6,7 @@ import '../../../models/car.dart';
 import '../internet/check_internet.dart';
 
 /// Get all car cylinders for specific car model
-Future getAllCarCylinders({required int? cylinderlId}) async {
+Future getCarCylinders({required int? cylinderlId}) async {
   //get all car variables
   Car carVars = Get.put(Car());
   //Check internet access before begining

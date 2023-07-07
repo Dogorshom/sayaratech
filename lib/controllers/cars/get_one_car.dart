@@ -1,11 +1,10 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import '../../../models/authentication.dart';
 import '../../../models/car.dart';
+import '../../ui_manager/widgets/overlays/car_details_overlay.dart';
 import '../internet/check_internet.dart';
 import '../tokens/refresh_token.dart';
 
@@ -96,122 +95,4 @@ Future getOneCarDetails({required int carId}) async {
   //Stop loading
   carVars.isLoading.value = false;
   return;
-}
-
-///Car Details Widget to show one car details
-///
-///Need a Car to preview
-Widget carDetailsColumn(Car mycar) {
-  return Column(
-    children: [
-      Row(
-        children: [
-          Text(
-            "Id: ",
-            style: Get.textTheme.titleSmall,
-          ),
-          Text("${mycar.carId}"),
-        ],
-      ),
-      Row(
-        children: [
-          Text(
-            "Vendor Id: ",
-            style: Get.textTheme.titleSmall,
-          ),
-          Text("${mycar.carVendorId}"),
-        ],
-      ),
-      Row(
-        children: [
-          Text(
-            "Vendor Name: ",
-            style: Get.textTheme.titleSmall,
-          ),
-          Text("${mycar.carVendorName}"),
-        ],
-      ),
-      Row(
-        children: [
-          Text(
-            "Model Id: ",
-            style: Get.textTheme.titleSmall,
-          ),
-          Text("${mycar.carModelId}"),
-        ],
-      ),
-      Row(
-        children: [
-          Text(
-            "Mode Name: ",
-            style: Get.textTheme.titleSmall,
-          ),
-          Text("${mycar.carModel}"),
-        ],
-      ),
-      Row(
-        children: [
-          Text(
-            "Color id: ",
-            style: Get.textTheme.titleSmall,
-          ),
-          Text("${mycar.carColorId}"),
-        ],
-      ),
-      Row(
-        children: [
-          Text(
-            "Color Name: ",
-            style: Get.textTheme.titleSmall,
-          ),
-          Text("${mycar.carColor}"),
-        ],
-      ),
-      Row(
-        children: [
-          Text(
-            "Model Year: ",
-            style: Get.textTheme.titleSmall,
-          ),
-          Text("${mycar.carProductionDate}"),
-        ],
-      ),
-      Row(
-        children: [
-          Text(
-            "License: ",
-            style: Get.textTheme.titleSmall,
-          ),
-          Text("${mycar.carLicenseNumber}"),
-        ],
-      ),
-      Row(
-        children: [
-          Text(
-            "Plate: ",
-            style: Get.textTheme.titleSmall,
-          ),
-          Text("${mycar.carPlateNumber} ${mycar.carPlateCharacters}"),
-        ],
-      ),
-      Row(
-        children: [
-          Text(
-            "Fuel Type: ",
-            style: Get.textTheme.titleSmall,
-          ),
-          Text("${mycar.carFuel}"),
-        ],
-      ),
-      Row(
-        children: [
-          Text(
-            "Cylinder Id: ",
-            style: Get.textTheme.titleSmall,
-          ),
-          Text("${mycar.cylinderId}"),
-        ],
-      ),
-    ],
-  );
 }
