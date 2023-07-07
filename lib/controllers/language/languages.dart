@@ -61,7 +61,8 @@ class Languages extends Translations {
           'Delete Account': 'مسح الحساب',
           'Home': 'الرئيسية',
           'Reservations': 'حجوزاتي',
-          'Cars': 'سياراتي'
+          'Cars': 'سياراتي',
+          'Delete': 'مسح'
         },
         'en_US': {
           'Sayara Tech': 'Sayara Tech',
@@ -122,7 +123,8 @@ class Languages extends Translations {
           'Delete Account': 'Delete Account',
           'Home': 'Home',
           'Reservations': 'Reservations',
-          'Cars': 'Cars'
+          'Cars': 'Cars',
+          'Delete': 'Delete'
         },
       };
 }
