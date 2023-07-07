@@ -49,7 +49,7 @@ class Languages extends Translations {
               'استخدم هذا الكود في برنامج سيارتك, قم بتحميل التطبيق https://dogorshom.com',
           'Give code for friends sentence':
               'عط هالكود للي يعز عليك وراح تجيك مكافئتك بالمحفظة',
-          'Profile': 'الحساب الشخصي',
+          'Profile': 'صفحتي',
           'Reservations & Bills': 'الحجوزات و الفواتير',
           'Settings': 'الإعدادات',
           'Addresses': 'العناوين',
