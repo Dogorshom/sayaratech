@@ -85,9 +85,9 @@ class CarCard extends StatelessWidget {
                     onTap: () {
                       deleteCar(carId: car.carId!, indexInList: carIndexInList);
                     },
-                    child: const Text("Delete")),
+                    child: Text("Delete".tr)),
                 CustomButton(
-                  text: "Update",
+                  text: "Update".tr,
                   onTap: () {
                     setCarValuesForUpdate(car: car);
                     print("iside car card");

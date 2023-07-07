@@ -14,6 +14,8 @@ import '../../../ui_manager/sized_box_manager.dart';
 import '../../../ui_manager/widgets/profile_single_row.dart';
 import 'package:share_plus/share_plus.dart';
 
+import '../../ui_manager/widgets/overlays/logout_dialog.dart';
+
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
@@ -238,7 +240,7 @@ class ProfileScreen extends StatelessWidget {
                                   title: "Logout".tr,
                                   divider: false,
                                   onTap: () async {
-                                    await logout();
+                                    await logoutDialog();
                                   },
                                 ),
                                 fixedSizedBoxHeight,
