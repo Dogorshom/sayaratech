@@ -8,9 +8,9 @@ import '../../../ui_manager/widgets/buttons/custom_button.dart';
 logoutDialog() async {
   Get.defaultDialog(
     backgroundColor: primaryColor,
-    title: "Logout",
-    content: const Text(
-      "You are going to logout from the application, Are you sure you want to logout?",
+    title: "Logout".tr,
+    content: Text(
+      "Logout Sentence".tr,
       textAlign: TextAlign.center,
     ),
     confirm: Row(
@@ -18,7 +18,7 @@ logoutDialog() async {
       children: [
         TextButton(
           child: Text(
-            "Cancel",
+            "Cancel".tr,
             style: Get.textTheme.titleSmall!.copyWith(color: whiteColor),
           ),
           onPressed: () {
@@ -26,7 +26,7 @@ logoutDialog() async {
           },
         ),
         CustomButton(
-          text: "Logout",
+          text: "Logout".tr,
           backgroundColor: redColor,
           onTap: logout,
           // textColor: ,
