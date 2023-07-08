@@ -6,7 +6,7 @@ import '../../../models/car.dart';
 import '../internet/check_internet.dart';
 
 /// Get all car cylinders for specific car model
-Future getCarCylinders({required int? cylinderlId}) async {
+Future getCarCylinders({required int? modelId}) async {
   //get all car variables
   Car carVars = Get.put(Car());
   //Check internet access before begining
@@ -19,7 +19,7 @@ Future getCarCylinders({required int? cylinderlId}) async {
   try {
     //Request's URL, pass cylinder Id in url
     Uri url = Uri.parse(
-        "https://satc.live/api/General/Cars/Models/Cylinder/$cylinderlId");
+        "https://satc.live/api/General/Cars/Models/Cylinder/$modelId");
     //Header for post request, check customer language before setting 'lng'
     Map<String, String> headers = {
       'lng': Get.locale!.languageCode == 'en' ? 'en' : 'ar',

@@ -50,7 +50,7 @@ Future getCars() async {
             carPlateCharacters: car["Board_No"].toString().split(" ").last,
             cylinderId: car["Cylinder_id"],
             // cylinder name not provided by API
-            // cylinder: car["Cylinder"],
+            // cylinder: cylinderName,
             carFuelId: car["Car_Fule_Type_id"],
             carProductionDate: car["Model_Year"].toString(),
             carVendorName: car[Get.locale!.languageCode == 'en'

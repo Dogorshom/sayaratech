@@ -66,7 +66,7 @@ Future addOrUpdateCar({int? idForUpdate}) async {
       Get.to(() => const Home());
     } else {
       //When error show customer message
-      Get.snackbar("Error", dataRecieved["message"].toString());
+      Get.snackbar("Error", "Please make sure your data is correct".toString());
       //Stop loading
       addCarVars.isLoading.value = false;
       return;
