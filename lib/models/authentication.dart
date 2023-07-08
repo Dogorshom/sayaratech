@@ -52,4 +52,8 @@ class Authentication extends GetxController {
   //Confirm password text controller
   Rx<TextEditingController> confirmPasswordController =
       TextEditingController().obs;
+  //Check if customer in dark mode or not
+  Rx<bool> isDarkMode = false.obs;
+  //Check if customer use [ar] or [en]
+  Rx<bool> isArabic = false.obs;
 }
