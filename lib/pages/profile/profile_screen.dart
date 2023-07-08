@@ -200,7 +200,7 @@ class ProfileScreen extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("Profile".tr),
+                                Text("Personal Profile".tr),
                                 SingleProfileRow(
                                   icon: const Icon(Icons.article_outlined),
                                   title: "Reservations & Bills".tr,
@@ -218,7 +218,7 @@ class ProfileScreen extends StatelessWidget {
                                   },
                                 ),
                                 SingleProfileRow(
-                                  icon: const Icon(Icons.settings),
+                                  icon: const Icon(Icons.settings_outlined),
                                   title: "Settings".tr,
                                   onTap: () {
                                     Get.to(() => const SettingsScreen());

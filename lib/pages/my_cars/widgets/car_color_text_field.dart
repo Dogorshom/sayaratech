@@ -26,7 +26,7 @@ class CarColorsTextField extends StatelessWidget {
                       hintText: "Car Color".tr,
                       suffixIcon: InkWell(
                         onTap: () {
-                          content.scrollController.value.animateTo(100,
+                          content.scrollController.value.animateTo(Get.height,
                               curve: Curves.easeOut,
                               duration: const Duration(seconds: 1));
                           content.isSearchingForCarColors.value =
@@ -47,7 +47,7 @@ class CarColorsTextField extends StatelessWidget {
                     if (!content.isSearchingForCarColors.value) {
                       content.isSearchingForCarColors.value = true;
                     }
-                    content.scrollController.value.animateTo(100,
+                    content.scrollController.value.animateTo(Get.height,
                         curve: Curves.easeOut,
                         duration: const Duration(seconds: 1));
                     getCarColors();

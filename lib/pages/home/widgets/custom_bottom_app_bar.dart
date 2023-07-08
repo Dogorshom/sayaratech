@@ -16,7 +16,7 @@ class CustomBottomAppBar extends StatelessWidget {
     var content = Get.put(WhichHome());
     return Obx(
       () => Container(
-        height: 80,
+        height: 75,
         decoration: BoxDecoration(color: Get.theme.cardColor, boxShadow: [
           BoxShadow(
               color: Get.theme.shadowColor,

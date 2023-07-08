@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sayaratech/models/car.dart';
 import '../../../models/authentication.dart';
 import '../../../ui_manager/colors_manager.dart';
 import '../../../ui_manager/fixed_numbers_manager.dart';
@@ -12,6 +13,7 @@ class EditProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Authentication authVars = Get.put(Authentication());
+    Car carVars = Get.put(Car());
     // authVars.numberOfActiveCars.value = 20;
     print(authVars.numberOfActiveCars.value);
     return Scaffold(
@@ -53,7 +55,7 @@ class EditProfileScreen extends StatelessWidget {
                     ),
                     fixedSmallSizedBoxWidth,
                     Text(
-                      authVars.numberOfActiveCars.value.toString(),
+                      carVars.carsList.length.toString(),
                       style: Get.textTheme.titleLarge,
                     )
                   ],

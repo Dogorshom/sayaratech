@@ -1,6 +1,8 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sayaratech/controllers/cars/get_cars.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../../ui_manager/widgets/profile_single_row.dart';
 import '../../../../ui_manager/colors_manager.dart';
 import '../../../../ui_manager/fixed_numbers_manager.dart';
@@ -52,9 +54,13 @@ class SettingsScreen extends StatelessWidget {
                         tail: Row(
                           children: [
                             InkWell(
-                              onTap: () {
+                              onTap: () async {
                                 if (Get.locale != const Locale("en", "US")) {
+                                  SharedPreferences sharedPreferences =
+                                      await SharedPreferences.getInstance();
+                                  sharedPreferences.setBool("isArabic", false);
                                   Get.updateLocale(const Locale("en", "US"));
+                                  getCars();
                                 }
                               },
                               child: Text(
@@ -67,9 +73,13 @@ class SettingsScreen extends StatelessWidget {
                             fixedSizedBoxWidth,
                             fixedSizedBoxWidth,
                             InkWell(
-                              onTap: () {
-                                if (Get.locale != const Locale("ar", "SD")) {
-                                  Get.updateLocale(const Locale("ar", "SD"));
+                              onTap: () async {
+                                if (Get.locale != const Locale("ar", "SA")) {
+                                  SharedPreferences sharedPreferences =
+                                      await SharedPreferences.getInstance();
+                                  sharedPreferences.setBool("isArabic", true);
+                                  Get.updateLocale(const Locale("ar", "SA"));
+                                  getCars();
                                 }
                               },
                               child: Text(
@@ -104,11 +114,16 @@ class SettingsScreen extends StatelessWidget {
                             activeTrackColor: secondaryColor,
                             inactiveTrackColor:
                                 Theme.of(context).focusColor.withOpacity(0.5),
-                            onChanged: (isDarkMode) {
+                            onChanged: (isDarkMode) async {
+                              SharedPreferences sharedPreferences =
+                                  await SharedPreferences.getInstance();
+
                               if (Get.isDarkMode) {
                                 Get.changeTheme(lightThemeData);
+                                sharedPreferences.setBool("isDarkMode", false);
                               } else {
                                 Get.changeTheme(darkThemeData);
+                                sharedPreferences.setBool("isDarkMode", true);
                               }
                             },
                           ),

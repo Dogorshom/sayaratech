@@ -42,7 +42,7 @@ class CarCylinderTextField extends StatelessWidget {
                               !content.isSearchingForCarCylinder.value;
                           if (content.isSearchingForCarCylinder.value) {
                             getCarCylinders(
-                                cylinderlId:
+                                modelId:
                                     content.carModelController["id"]!.value);
                           }
                         },
@@ -61,14 +61,14 @@ class CarCylinderTextField extends StatelessWidget {
                     print("This is passed");
                     print(content.carModelController["id"]!.value.toString());
                     getCarCylinders(
-                        cylinderlId: content.carModelController["id"]!.value);
+                        modelId: content.carModelController["id"]!.value);
                   },
                   onChanged: (v) async {
                     if (!content.isSearchingForCarCylinder.value) {
                       content.isSearchingForCarCylinder.value = true;
                     }
                     getCarCylinders(
-                        cylinderlId: content.carModelController["id"]!.value);
+                        modelId: content.carModelController["id"]!.value);
                   },
                 ),
                 ConstrainedBox(
