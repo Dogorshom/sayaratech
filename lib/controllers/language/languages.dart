@@ -50,11 +50,13 @@ class Languages extends Translations {
           'Give code for friends sentence':
               'عط هالكود للي يعز عليك وراح تجيك مكافئتك بالمحفظة',
           'Profile': 'صفحتي',
+          'Personal Profile': 'الحساب الشخصي',
           'Reservations & Bills': 'الحجوزات و الفواتير',
           'Settings': 'الإعدادات',
           'Addresses': 'العناوين',
           'CashBack': 'الإسترداد النقدي',
           'Logout': 'تسجيل الخروج',
+          'Cancel': 'إلغاء',
           'Language': 'اللغة',
           'Dark Mode': 'الوضع الليلي',
           'Privacy Policy': 'سياسة الخصوصية',
@@ -62,7 +64,10 @@ class Languages extends Translations {
           'Home': 'الرئيسية',
           'Reservations': 'حجوزاتي',
           'Cars': 'سياراتي',
-          'Delete': 'مسح'
+          'Delete': 'مسح',
+          'Logout Sentence':
+              'أنت ستخرج من التطبيق! هل انت متأكد من انك تريد الخروج من التطبيق؟',
+          'Error': 'خطأ',
         },
         'en_US': {
           'Sayara Tech': 'Sayara Tech',
@@ -112,11 +117,13 @@ class Languages extends Translations {
           'Give code for friends sentence':
               'Give this code to you friends\ntake your reward',
           'Profile': 'Profile',
+          'Personal Profile': 'Profile',
           'Reservations & Bills': 'Reservations & Bills',
           'Settings': 'Settings',
           'Addresses': 'Addresses',
           'CashBack': 'CashBack',
           'Logout': 'Logout',
+          'Cancel': 'Cancel',
           'Language': 'Language',
           'Dark Mode': 'Dark Mode',
           'Privacy Policy': 'Privacy Policy',
@@ -124,7 +131,10 @@ class Languages extends Translations {
           'Home': 'Home',
           'Reservations': 'Reservations',
           'Cars': 'Cars',
-          'Delete': 'Delete'
+          'Delete': 'Delete',
+          'Logout Sentence':
+              'You are going to logout from the application, Are you sure you want to logout?',
+          'Error': 'Error',
         },
       };
 }
