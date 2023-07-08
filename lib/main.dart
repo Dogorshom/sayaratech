@@ -27,11 +27,13 @@ class MyApp extends StatelessWidget {
       translations: Languages(),
       fallbackLocale: const Locale('en', 'US'),
       darkTheme: darkThemeData,
-      locale: const Locale('ar', 'SA'),
+      locale: authVars.isArabic.value
+          ? const Locale('ar', 'SA')
+          : const Locale('en', 'US'),
       title: 'Sayara Tech',
       defaultTransition: Transition.fadeIn,
-      theme: lightThemeData,
-      themeMode: Get.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+      theme: authVars.isDarkMode.value ? darkThemeData : lightThemeData,
+      themeMode: authVars.isDarkMode.value ? ThemeMode.dark : ThemeMode.light,
       home: authVars.isAlreadyLoginInThisDevice.value
           ? const Home()
           : const LoginScreen(),
@@ -39,6 +41,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+/// Get local customer if exist information before open the app
 getUserInfoIfAvailable() async {
   Authentication authVars = Get.put(Authentication());
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
@@ -57,5 +60,11 @@ getUserInfoIfAvailable() async {
     authVars.isAlreadyLoginInThisDevice.value = true;
   } else {
     authVars.isAlreadyLoginInThisDevice.value = false;
+  }
+  if (sharedPreferences.getBool("isDarkMode") != null) {
+    authVars.isDarkMode.value = sharedPreferences.getBool("isDarkMode")!;
+  }
+  if (sharedPreferences.getBool("isArabic") != null) {
+    authVars.isArabic.value = sharedPreferences.getBool("isArabic")!;
   }
 }
