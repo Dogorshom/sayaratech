@@ -58,8 +58,6 @@ class CarCylinderTextField extends StatelessWidget {
                     if (!content.isSearchingForCarCylinder.value) {
                       content.isSearchingForCarCylinder.value = true;
                     }
-                    print("This is passed");
-                    print(content.carModelController["id"]!.value.toString());
                     getCarCylinders(
                         modelId: content.carModelController["id"]!.value);
                   },
@@ -81,9 +79,6 @@ class CarCylinderTextField extends StatelessWidget {
                     child: ListView.builder(
                         itemCount: content.specificResForCarCylinders.length,
                         itemBuilder: (_, index) {
-                          print("object");
-                          print(content.specificResForCarCylinders.length
-                              .toString());
                           return InkWell(
                             onTap: () {
                               FocusScope.of(context).unfocus();

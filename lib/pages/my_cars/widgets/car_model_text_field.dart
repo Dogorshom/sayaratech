@@ -65,8 +65,6 @@ class CarModelTextField extends StatelessWidget {
                     if (!content.isSearchingForCarModel.value) {
                       content.isSearchingForCarModel.value = true;
                     }
-                    print("This is passed");
-                    print(content.carVendorController["id"]!.value.toString());
                     getCarModels(
                         vendorIdForUrl:
                             content.carVendorController["id"]!.value);

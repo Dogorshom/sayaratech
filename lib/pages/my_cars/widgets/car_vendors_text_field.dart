@@ -101,9 +101,6 @@ class CarVendorTextField extends StatelessWidget {
                                           ["name"]!
                                       .toString()
                                       .capitalizeFirst!;
-                              print("This is chossen");
-                              print(content.specificResForCarVendors[index]
-                                  ["id"]!);
                               content.carVendorController["id"]!.value = content
                                   .specificResForCarVendors[index]["id"]!;
                               content.isSearchingForCarVendor.value = false;

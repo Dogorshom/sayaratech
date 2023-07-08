@@ -14,8 +14,6 @@ class EditProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Authentication authVars = Get.put(Authentication());
     Car carVars = Get.put(Car());
-    // authVars.numberOfActiveCars.value = 20;
-    print(authVars.numberOfActiveCars.value);
     return Scaffold(
       appBar: AppBar(
         title: Text("Edit Profile".tr),

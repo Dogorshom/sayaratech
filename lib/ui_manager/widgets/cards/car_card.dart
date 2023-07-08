@@ -90,8 +90,6 @@ class CarCard extends StatelessWidget {
                   text: "Update".tr,
                   onTap: () {
                     setCarValuesForUpdate(car: car);
-                    print("iside car card");
-                    print(car.carVendorName.toString());
                     Get.to(() => AddOrUpdateCarsScreen(
                           isUpdate: true,
                           carIdForUpdate: car.carId,
