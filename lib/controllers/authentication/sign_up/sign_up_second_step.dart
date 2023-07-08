@@ -20,22 +20,20 @@ Future signUpSecondStep() async {
   //Start loading
   authVars.isLoading.value = true;
   try {
-    //Request's URL
+    //Request's URL, pass step 1 id and sms code
+    print(authVars.step1Id.value.toString());
+    print(authVars.smsCodeController.value.text);
     Uri url = Uri.parse(
-        "https://satc.live/api/General/Customers/NewRegistrationStep2");
+        "https://satc.live/api/General/Customers/NewRegistrationStep2?step1id=${authVars.step1Id.value}&smscode=${authVars.smsCodeController.value.text}");
     //Header for post request, check customer language before setting 'lng'
     Map<String, String> headers = {
       'lng': Get.locale!.languageCode == 'en' ? 'en' : 'ar',
     };
-    //Request's body
-    Map body = <String, dynamic>{
-      "step1id": authVars.step1Id.value,
-      "smscode": authVars.smsCodeController.value.text,
-    };
     //'Post' request
-    http.Response response = await http.post(url, headers: headers, body: body);
+    http.Response response = await http.post(url, headers: headers);
     //Decode json data
     Map dataRecieved = jsonDecode(response.body);
+    log(dataRecieved.toString());
     //Check if the 'status' of the request is true or not
     if (dataRecieved["status"] != null && dataRecieved["status"] == true) {
       //Save token for retreiving customer data
@@ -46,7 +44,7 @@ Future signUpSecondStep() async {
       });
     } else {
       //When error show customer message
-      Get.snackbar("Error", dataRecieved["message"].toString());
+      Get.snackbar("Error", dataRecieved["error"].toString());
       //Stop loading
       authVars.isLoading.value = false;
       return;

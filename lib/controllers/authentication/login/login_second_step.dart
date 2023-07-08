@@ -45,7 +45,7 @@ Future loginSecondStep() async {
       });
     } else {
       //When error show customer message
-      Get.snackbar("Error", dataRecieved["message"].toString());
+      Get.snackbar("Error", dataRecieved["error"].toString());
       //Stop loading
       authVars.isLoading.value = false;
       return;

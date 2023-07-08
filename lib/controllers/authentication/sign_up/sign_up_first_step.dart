@@ -41,6 +41,7 @@ Future signUpFirstStep() async {
           await http.post(url, headers: headers, body: body);
       //Decode json data
       Map dataRecieved = jsonDecode(response.body);
+      log(dataRecieved.toString());
       //Check if the 'status' of the request is true or not
       if (dataRecieved["status"] != null && dataRecieved["status"] == true) {
         //Saving step 1 Id for step 2
@@ -51,7 +52,7 @@ Future signUpFirstStep() async {
         Get.to(() => const VerifyPhoneNumberScreen(isForLogin: false));
       } else {
         //When error show customer message
-        Get.snackbar("Error", dataRecieved["message"].toString());
+        Get.snackbar("Error", dataRecieved["error"].toString());
         //Stop loading
         authVars.isLoading.value = false;
         return;
