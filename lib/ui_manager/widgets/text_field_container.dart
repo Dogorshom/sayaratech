@@ -13,7 +13,7 @@ class TextFieldContainer extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border.all(color: greyColor.withOpacity(0.5)),
         borderRadius: BorderRadius.circular(fixedBorderRadius),
-        color: Get.theme.cardColor,
+        color: Theme.of(context).cardColor,
       ),
       child: child,
     );

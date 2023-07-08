@@ -66,7 +66,7 @@ class SingleProfileRow extends StatelessWidget {
               const EdgeInsets.symmetric(horizontal: fixedMainPadding * 1.5),
           child: divider == null || divider == true
               ? Divider(
-                  color: Get.theme.focusColor.withOpacity(0.3),
+                  color: Theme.of(context).focusColor.withOpacity(0.3),
                 )
               : Container(),
         )

@@ -17,9 +17,10 @@ class CustomBottomAppBar extends StatelessWidget {
       () => Container(
         height: 70,
         alignment: Alignment.bottomCenter,
-        decoration: BoxDecoration(color: Get.theme.cardColor, boxShadow: [
+        decoration:
+            BoxDecoration(color: Theme.of(context).cardColor, boxShadow: [
           BoxShadow(
-              color: Get.theme.shadowColor,
+              color: Theme.of(context).shadowColor,
               offset: const Offset(0, -0.1),
               blurRadius: fixedBlurForShadow,
               blurStyle: BlurStyle.inner)
@@ -48,7 +49,9 @@ class CustomBottomAppBar extends StatelessWidget {
                               )
                             : Icon(
                                 Icons.home_outlined,
-                                color: Get.theme.focusColor.withOpacity(0.3),
+                                color: Theme.of(context)
+                                    .focusColor
+                                    .withOpacity(0.3),
                                 size: 20,
                               ),
                         Text(
@@ -58,7 +61,9 @@ class CustomBottomAppBar extends StatelessWidget {
                                   color: primaryColor,
                                   fontWeight: FontWeight.w500)
                               : Get.textTheme.bodySmall!.copyWith(
-                                  color: Get.theme.focusColor.withOpacity(0.4)),
+                                  color: Theme.of(context)
+                                      .focusColor
+                                      .withOpacity(0.4)),
                         )
                       ],
                     ),
@@ -80,7 +85,9 @@ class CustomBottomAppBar extends StatelessWidget {
                               )
                             : Icon(
                                 Icons.departure_board_outlined,
-                                color: Get.theme.focusColor.withOpacity(0.3),
+                                color: Theme.of(context)
+                                    .focusColor
+                                    .withOpacity(0.3),
                                 size: 20,
                               ),
                         Text(
@@ -90,7 +97,9 @@ class CustomBottomAppBar extends StatelessWidget {
                                   color: primaryColor,
                                   fontWeight: FontWeight.w500)
                               : Get.textTheme.bodySmall!.copyWith(
-                                  color: Get.theme.focusColor.withOpacity(0.4)),
+                                  color: Theme.of(context)
+                                      .focusColor
+                                      .withOpacity(0.4)),
                         )
                       ],
                     ),
@@ -112,7 +121,9 @@ class CustomBottomAppBar extends StatelessWidget {
                               )
                             : Icon(
                                 Icons.car_rental_outlined,
-                                color: Get.theme.focusColor.withOpacity(0.3),
+                                color: Theme.of(context)
+                                    .focusColor
+                                    .withOpacity(0.3),
                                 size: 20,
                               ),
                         Text(
@@ -122,7 +133,9 @@ class CustomBottomAppBar extends StatelessWidget {
                                   color: primaryColor,
                                   fontWeight: FontWeight.w500)
                               : Get.textTheme.bodySmall!.copyWith(
-                                  color: Get.theme.focusColor.withOpacity(0.4)),
+                                  color: Theme.of(context)
+                                      .focusColor
+                                      .withOpacity(0.4)),
                         )
                       ],
                     ),
@@ -144,7 +157,9 @@ class CustomBottomAppBar extends StatelessWidget {
                               )
                             : Icon(
                                 Icons.person_outline,
-                                color: Get.theme.focusColor.withOpacity(0.3),
+                                color: Theme.of(context)
+                                    .focusColor
+                                    .withOpacity(0.3),
                                 size: 20,
                               ),
                         Text(
@@ -154,7 +169,9 @@ class CustomBottomAppBar extends StatelessWidget {
                                   color: primaryColor,
                                   fontWeight: FontWeight.w500)
                               : Get.textTheme.bodySmall!.copyWith(
-                                  color: Get.theme.focusColor.withOpacity(0.4)),
+                                  color: Theme.of(context)
+                                      .focusColor
+                                      .withOpacity(0.4)),
                         )
                       ],
                     ),

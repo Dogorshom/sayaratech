@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sayaratech/controllers/cars/get_cars.dart';
@@ -15,7 +14,6 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(Get.locale.toString());
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -32,13 +30,13 @@ class SettingsScreen extends StatelessWidget {
                 fixedSizedBoxHeight,
                 fixedSizedBoxHeight,
                 Container(
-                  padding: EdgeInsets.all(fixedPadding),
+                  padding: const EdgeInsets.all(fixedPadding),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(fixedBorderRadius),
-                      color: Get.theme.cardColor,
+                      color: Theme.of(context).cardColor,
                       boxShadow: [
                         BoxShadow(
-                            color: Get.theme.shadowColor,
+                            color: Theme.of(context).shadowColor,
                             offset: const Offset(0, 1),
                             blurRadius: fixedBlurForShadow)
                       ]),
@@ -60,6 +58,8 @@ class SettingsScreen extends StatelessWidget {
                                       await SharedPreferences.getInstance();
                                   sharedPreferences.setBool("isArabic", false);
                                   Get.updateLocale(const Locale("en", "US"));
+                                  //Sometimes data losted when updating theme mode or changing languages
+                                  //This will just recall get cars funtion again
                                   getCars();
                                 }
                               },
@@ -79,6 +79,8 @@ class SettingsScreen extends StatelessWidget {
                                       await SharedPreferences.getInstance();
                                   sharedPreferences.setBool("isArabic", true);
                                   Get.updateLocale(const Locale("ar", "SA"));
+                                  //Sometimes data losted when updating theme mode or changing languages
+                                  //This will just recall get cars funtion again
                                   getCars();
                                 }
                               },
@@ -113,18 +115,22 @@ class SettingsScreen extends StatelessWidget {
                             activeColor: primaryColor,
                             activeTrackColor: secondaryColor,
                             inactiveTrackColor:
-                                Get.theme.focusColor.withOpacity(0.5),
+                                Theme.of(context).focusColor.withOpacity(0.5),
                             onChanged: (isDarkMode) async {
                               SharedPreferences sharedPreferences =
                                   await SharedPreferences.getInstance();
-
                               if (Get.isDarkMode) {
                                 Get.changeTheme(lightThemeData);
-                                sharedPreferences.setBool("isDarkMode", false);
+                                await sharedPreferences.setBool(
+                                    "isDarkMode", false);
                               } else {
                                 Get.changeTheme(darkThemeData);
-                                sharedPreferences.setBool("isDarkMode", true);
+                                await sharedPreferences.setBool(
+                                    "isDarkMode", true);
                               }
+                              //Sometimes data losted when updating theme mode or changing languages
+                              //This will just recall get cars funtion again
+                              getCars();
                             },
                           ),
                         ),
@@ -150,10 +156,10 @@ class SettingsScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(fixedPadding),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(fixedBorderRadius),
-                      color: Get.theme.cardColor,
+                      color: Theme.of(context).cardColor,
                       boxShadow: [
                         BoxShadow(
-                            color: Get.theme.shadowColor,
+                            color: Theme.of(context).shadowColor,
                             offset: const Offset(0, 1),
                             blurRadius: fixedBlurForShadow)
                       ]),

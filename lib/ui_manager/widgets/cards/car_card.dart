@@ -24,7 +24,7 @@ class CarCard extends StatelessWidget {
       // height: Get.height * 0.2,
       width: Get.width,
       decoration: BoxDecoration(
-          color: Get.theme.cardColor,
+          color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.circular(fixedBorderRadius),
           border: Border.all(color: blackColor.withOpacity(0.2))),
       child: Padding(
@@ -49,7 +49,7 @@ class CarCard extends StatelessWidget {
                 height: Get.height * 0.05,
                 width: Get.width,
                 decoration: BoxDecoration(
-                  color: Get.theme.cardColor,
+                  color: Theme.of(context).cardColor,
                   borderRadius: BorderRadius.circular(fixedBorderRadius),
                   border: Border.all(color: secondaryColor.withOpacity(0.3)),
                 ),

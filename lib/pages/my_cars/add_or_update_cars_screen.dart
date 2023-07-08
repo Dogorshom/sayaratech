@@ -55,7 +55,7 @@ class AddOrUpdateCarsScreen extends StatelessWidget {
           body: Container(
             height: Get.height,
             width: Get.width,
-            color: Get.theme.scaffoldBackgroundColor,
+            color: Theme.of(context).scaffoldBackgroundColor,
             child: SingleChildScrollView(
               controller: addCarVariables.scrollController.value,
               child: InkWell(

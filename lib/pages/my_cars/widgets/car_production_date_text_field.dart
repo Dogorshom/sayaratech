@@ -104,7 +104,7 @@ class DateOfProductionTextField extends StatelessWidget {
                                               1
                                       ? Container()
                                       : Divider(
-                                          color: Get.theme.shadowColor,
+                                          color: Theme.of(context).shadowColor,
                                           height: 0,
                                         ),
                                   fixedSizedBoxHeight,

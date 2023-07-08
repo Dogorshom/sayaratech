@@ -13,7 +13,7 @@ class LoadingOverlay extends StatelessWidget {
     return Container(
       height: height,
       width: width,
-      color: Get.theme.focusColor.withOpacity(0.3),
+      color: Theme.of(context).focusColor.withOpacity(0.3),
       alignment: Alignment.center,
       child: Container(
         height: 90,
