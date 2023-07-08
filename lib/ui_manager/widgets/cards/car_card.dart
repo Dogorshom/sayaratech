@@ -116,20 +116,14 @@ class CarCard extends StatelessWidget {
   }
 }
 
-Widget getCarIcon(String carType) {
-  if (carType == "Hyundai") {
+Widget getCarIcon(String carVendor) {
+  if (carVendor == "Hyundai" || carVendor == "هيونداي") {
     return Image.asset(
       "assets/Icons/icons8-hyundai-400.png",
       height: 30,
     );
   }
-  if (carType == "Kia") {
-    return Image.asset(
-      "assets/Icons/icons8-kia-480.png",
-      height: 30,
-    );
-  }
-  if (carType == "Ford") {
+  if (carVendor == "Ford" || carVendor == "فورد") {
     return Image.asset(
       "assets/Icons/icons8-ford-480.png",
       height: 30,

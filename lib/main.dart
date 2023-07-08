@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import '../../../models/authentication.dart';
 import '../../pages/authentication/login_screen.dart';
 import '../../pages/home/home.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'controllers/authentication/get_local_data.dart';
 import 'controllers/language/languages.dart';
 import 'ui_manager/themes/dark_theme.dart';
 import 'ui_manager/themes/light_theme.dart';
@@ -38,33 +38,5 @@ class MyApp extends StatelessWidget {
           ? const Home()
           : const LoginScreen(),
     );
-  }
-}
-
-/// Get local customer if exist information before open the app
-getUserInfoIfAvailable() async {
-  Authentication authVars = Get.put(Authentication());
-  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  if (sharedPreferences.getInt("customer_id") != null) {
-    authVars.id.value = sharedPreferences.getInt("customer_id")!;
-    authVars.name.value = sharedPreferences.getString("customer_name")!;
-    authVars.username.value = sharedPreferences.getString("customer_username")!;
-    authVars.email.value = sharedPreferences.getString("customer_email")!;
-    authVars.walletBalance.value =
-        sharedPreferences.getDouble("customer_wallet_balance")!;
-    authVars.numberOfActiveCars.value =
-        sharedPreferences.getInt("customer_number_of_active_cars")!;
-    authVars.phoneNumber.value = sharedPreferences.getString("customer_phone")!;
-    authVars.bearerToken.value =
-        sharedPreferences.getString("customer_latest_token")!;
-    authVars.isAlreadyLoginInThisDevice.value = true;
-  } else {
-    authVars.isAlreadyLoginInThisDevice.value = false;
-  }
-  if (sharedPreferences.getBool("isDarkMode") != null) {
-    authVars.isDarkMode.value = sharedPreferences.getBool("isDarkMode")!;
-  }
-  if (sharedPreferences.getBool("isArabic") != null) {
-    authVars.isArabic.value = sharedPreferences.getBool("isArabic")!;
   }
 }

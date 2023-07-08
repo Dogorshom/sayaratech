@@ -21,8 +21,6 @@ Future signUpSecondStep() async {
   authVars.isLoading.value = true;
   try {
     //Request's URL, pass step 1 id and sms code
-    print(authVars.step1Id.value.toString());
-    print(authVars.smsCodeController.value.text);
     Uri url = Uri.parse(
         "https://satc.live/api/General/Customers/NewRegistrationStep2?step1id=${authVars.step1Id.value}&smscode=${authVars.smsCodeController.value.text}");
     //Header for post request, check customer language before setting 'lng'
