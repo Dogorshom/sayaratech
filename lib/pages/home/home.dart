@@ -15,13 +15,17 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     var content = Get.put(WhichHome());
     return Scaffold(
-        body: Obx(() => content.whichPage.value == "Profile"
-            ? const ProfileScreen()
-            : content.whichPage.value == "Reservations"
-                ? const MyReservationsScreen()
-                : content.whichPage.value == "Cars"
-                    ? const MyCarsScreen()
-                    : const HomeScreen()),
+        body: Stack(
+          children: [
+            Obx(() => content.whichPage.value == "Profile"
+                ? const ProfileScreen()
+                : content.whichPage.value == "Reservations"
+                    ? const MyReservationsScreen()
+                    : content.whichPage.value == "Cars"
+                        ? const MyCarsScreen()
+                        : const HomeScreen()),
+          ],
+        ),
         bottomNavigationBar: const CustomBottomAppBar());
   }
 }

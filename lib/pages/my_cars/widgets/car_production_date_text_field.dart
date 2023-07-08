@@ -7,6 +7,7 @@ import '../../../ui_manager/widgets/text_field_container.dart';
 import '../../../controllers/cars/get_car_production_date.dart';
 import '../../../../ui_manager/fixed_numbers_manager.dart';
 
+///Car prdouction dates text field that shows up on adding or updating a car
 class DateOfProductionTextField extends StatelessWidget {
   const DateOfProductionTextField({super.key});
 
@@ -25,7 +26,8 @@ class DateOfProductionTextField extends StatelessWidget {
                       hintText: "Production Date".tr,
                       suffixIcon: InkWell(
                         onTap: () {
-                          content.scrollController.value.animateTo(150,
+                          content.scrollController.value.animateTo(
+                              Get.height * 0.2,
                               curve: Curves.easeOut,
                               duration: const Duration(seconds: 1));
                           content.isSearchingForDateOfProduction.value =
@@ -43,7 +45,7 @@ class DateOfProductionTextField extends StatelessWidget {
                       )),
                   style: Get.textTheme.bodyMedium,
                   onTap: () {
-                    content.scrollController.value.animateTo(150,
+                    content.scrollController.value.animateTo(Get.height * 0.2,
                         curve: Curves.easeOut,
                         duration: const Duration(seconds: 1));
                     if (!content.isSearchingForDateOfProduction.value) {
@@ -102,7 +104,7 @@ class DateOfProductionTextField extends StatelessWidget {
                                               1
                                       ? Container()
                                       : Divider(
-                                          color: Theme.of(context).shadowColor,
+                                          color: Get.theme.shadowColor,
                                           height: 0,
                                         ),
                                   fixedSizedBoxHeight,

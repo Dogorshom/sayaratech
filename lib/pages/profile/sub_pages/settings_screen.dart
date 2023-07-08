@@ -35,10 +35,10 @@ class SettingsScreen extends StatelessWidget {
                   padding: EdgeInsets.all(fixedPadding),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(fixedBorderRadius),
-                      color: Theme.of(context).cardColor,
+                      color: Get.theme.cardColor,
                       boxShadow: [
                         BoxShadow(
-                            color: Theme.of(context).shadowColor,
+                            color: Get.theme.shadowColor,
                             offset: const Offset(0, 1),
                             blurRadius: fixedBlurForShadow)
                       ]),
@@ -66,8 +66,8 @@ class SettingsScreen extends StatelessWidget {
                               child: Text(
                                 "En",
                                 style: Get.locale == const Locale("en", "US")
-                                    ? Theme.of(context).textTheme.titleSmall
-                                    : Theme.of(context).textTheme.bodySmall,
+                                    ? Get.textTheme.titleSmall
+                                    : Get.textTheme.bodySmall,
                               ),
                             ),
                             fixedSizedBoxWidth,
@@ -85,8 +85,8 @@ class SettingsScreen extends StatelessWidget {
                               child: Text(
                                 "Ar",
                                 style: Get.locale != const Locale("en", 'US')
-                                    ? Theme.of(context).textTheme.titleSmall
-                                    : Theme.of(context).textTheme.bodySmall,
+                                    ? Get.textTheme.titleSmall
+                                    : Get.textTheme.bodySmall,
                               ),
                             ),
                             fixedSizedBoxWidth,
@@ -113,7 +113,7 @@ class SettingsScreen extends StatelessWidget {
                             activeColor: primaryColor,
                             activeTrackColor: secondaryColor,
                             inactiveTrackColor:
-                                Theme.of(context).focusColor.withOpacity(0.5),
+                                Get.theme.focusColor.withOpacity(0.5),
                             onChanged: (isDarkMode) async {
                               SharedPreferences sharedPreferences =
                                   await SharedPreferences.getInstance();
@@ -150,15 +150,15 @@ class SettingsScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(fixedPadding),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(fixedBorderRadius),
-                      color: Theme.of(context).cardColor,
+                      color: Get.theme.cardColor,
                       boxShadow: [
                         BoxShadow(
-                            color: Theme.of(context).shadowColor,
+                            color: Get.theme.shadowColor,
                             offset: const Offset(0, 1),
                             blurRadius: fixedBlurForShadow)
                       ]),
                   child: SingleProfileRow(
-                    onTap: () {},
+                    onTap: () async {},
                     icon: Icon(
                       Icons.delete,
                       color: redColor,

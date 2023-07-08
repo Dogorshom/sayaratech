@@ -49,7 +49,7 @@ class CarCard extends StatelessWidget {
                 height: Get.height * 0.05,
                 width: Get.width,
                 decoration: BoxDecoration(
-                  color: Theme.of(context).cardColor,
+                  color: Get.theme.cardColor,
                   borderRadius: BorderRadius.circular(fixedBorderRadius),
                   border: Border.all(color: secondaryColor.withOpacity(0.3)),
                 ),

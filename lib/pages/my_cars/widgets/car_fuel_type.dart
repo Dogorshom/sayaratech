@@ -8,6 +8,7 @@ import '../../../ui_manager/widgets/text_field_container.dart';
 import '../../../controllers/cars/get_car_fuel_type.dart';
 import '../../../../ui_manager/fixed_numbers_manager.dart';
 
+///Car fuel types text field that shows up on adding or updating a car
 class CarFuelTypeTextField extends StatelessWidget {
   const CarFuelTypeTextField({super.key});
 
@@ -99,7 +100,7 @@ class CarFuelTypeTextField extends StatelessWidget {
                                               1
                                       ? Container()
                                       : Divider(
-                                          color: Theme.of(context).shadowColor,
+                                          color: Get.theme.shadowColor,
                                           height: 0,
                                         ),
                                   fixedSizedBoxHeight,

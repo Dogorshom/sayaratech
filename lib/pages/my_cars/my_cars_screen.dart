@@ -9,6 +9,7 @@ import '../../../ui_manager/widgets/buttons/custom_button.dart';
 import '../../../ui_manager/widgets/cards/car_card.dart';
 import '../../../models/car.dart';
 
+///My cars screen
 class MyCarsScreen extends StatelessWidget {
   const MyCarsScreen({super.key});
 

@@ -2,6 +2,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:sayaratech/controllers/cars/get_cars.dart';
 import 'package:sayaratech/models/which_home.dart';
 import 'package:sayaratech/pages/home/home.dart';
 import '../../../models/authentication.dart';
@@ -57,7 +58,7 @@ class ProfileScreen extends StatelessWidget {
                   child: Container(
                     width: Get.width,
                     decoration: BoxDecoration(
-                        color: Theme.of(context).scaffoldBackgroundColor,
+                        color: Get.theme.scaffoldBackgroundColor,
                         borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(fixedBorderRadius * 5),
                             topRight: Radius.circular(fixedBorderRadius * 5))),
@@ -209,7 +210,8 @@ class ProfileScreen extends StatelessWidget {
                                 SingleProfileRow(
                                   icon: const Icon(Icons.car_rental_outlined),
                                   title: "My Cars".tr,
-                                  onTap: () {
+                                  onTap: () async {
+                                    await getCars();
                                     Get.put(WhichHome()).whichPage.value =
                                         "Cars";
                                     Get.to(() => Home(

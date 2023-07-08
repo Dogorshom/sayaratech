@@ -8,6 +8,7 @@ import '../../../ui_manager/widgets/text_field_container.dart';
 import '../../../controllers/cars/get_car_colors.dart';
 import '../../../../ui_manager/fixed_numbers_manager.dart';
 
+///Car colors text field that shows up on adding or updating a car
 class CarColorsTextField extends StatelessWidget {
   const CarColorsTextField({super.key});
 
@@ -26,7 +27,8 @@ class CarColorsTextField extends StatelessWidget {
                       hintText: "Car Color".tr,
                       suffixIcon: InkWell(
                         onTap: () {
-                          content.scrollController.value.animateTo(Get.height,
+                          content.scrollController.value.animateTo(
+                              Get.height * 0.3,
                               curve: Curves.easeOut,
                               duration: const Duration(seconds: 1));
                           content.isSearchingForCarColors.value =
@@ -47,7 +49,7 @@ class CarColorsTextField extends StatelessWidget {
                     if (!content.isSearchingForCarColors.value) {
                       content.isSearchingForCarColors.value = true;
                     }
-                    content.scrollController.value.animateTo(Get.height,
+                    content.scrollController.value.animateTo(Get.height * 0.2,
                         curve: Curves.easeOut,
                         duration: const Duration(seconds: 1));
                     getCarColors();
@@ -106,7 +108,7 @@ class CarColorsTextField extends StatelessWidget {
                                               1
                                       ? Container()
                                       : Divider(
-                                          color: Theme.of(context).shadowColor,
+                                          color: Get.theme.shadowColor,
                                           height: 0,
                                         ),
                                   fixedSizedBoxHeight,

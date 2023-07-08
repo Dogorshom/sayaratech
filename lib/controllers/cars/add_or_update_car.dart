@@ -60,6 +60,8 @@ Future addOrUpdateCar({int? idForUpdate}) async {
     if (dataRecieved["status"] != null && dataRecieved["status"] == true) {
       //Call getcars function to update customer's car list
       await getCars();
+      //Delete carVars instances
+      Get.delete<Car>();
       //Go directly to 'Home' scree
       var whichHome = Get.put(WhichHome());
       whichHome.whichPage.value = "Cars";

@@ -52,7 +52,7 @@ Future signUpFirstStep() async {
         Get.to(() => const VerifyPhoneNumberScreen(isForLogin: false));
       } else {
         //When error show customer message
-        Get.snackbar("Error", dataRecieved["error"].toString());
+        Get.snackbar("Error", dataRecieved["message"].toString());
         //Stop loading
         authVars.isLoading.value = false;
         return;

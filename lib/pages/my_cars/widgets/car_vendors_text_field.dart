@@ -7,6 +7,7 @@ import '../../../ui_manager/widgets/text_field_container.dart';
 import '../../../controllers/cars/get_cars_vendors.dart';
 import '../../../../ui_manager/fixed_numbers_manager.dart';
 
+///Car vendors text field that shows up on adding or updating a car
 class CarVendorTextField extends StatelessWidget {
   final String? initData;
   const CarVendorTextField({super.key, this.initData});
@@ -130,7 +131,7 @@ class CarVendorTextField extends StatelessWidget {
                                               1
                                       ? Container()
                                       : Divider(
-                                          color: Theme.of(context).shadowColor,
+                                          color: Get.theme.shadowColor,
                                           height: 0,
                                         ),
                                   fixedSizedBoxHeight,

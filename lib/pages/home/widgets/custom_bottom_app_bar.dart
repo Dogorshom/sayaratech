@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/instance_manager.dart';
-import 'package:get/route_manager.dart';
 import '../../../models/which_home.dart';
 import '../../../ui_manager/colors_manager.dart';
 import '../../../ui_manager/fixed_numbers_manager.dart';
 
+///The main bottom app bar
 class CustomBottomAppBar extends StatelessWidget {
   const CustomBottomAppBar({
     super.key,
@@ -16,7 +15,8 @@ class CustomBottomAppBar extends StatelessWidget {
     var content = Get.put(WhichHome());
     return Obx(
       () => Container(
-        height: 75,
+        height: 70,
+        alignment: Alignment.bottomCenter,
         decoration: BoxDecoration(color: Get.theme.cardColor, boxShadow: [
           BoxShadow(
               color: Get.theme.shadowColor,
@@ -24,180 +24,145 @@ class CustomBottomAppBar extends StatelessWidget {
               blurRadius: fixedBlurForShadow,
               blurStyle: BlurStyle.inner)
         ]),
-        child: SafeArea(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    content.whichPage.value = "HomeScreen";
-                  },
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        flex: 2,
-                        child: content.whichPage.value == "HomeScreen"
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 2,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      content.whichPage.value = "HomeScreen";
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        content.whichPage.value == "HomeScreen"
                             ? Icon(
                                 Icons.home,
                                 color: primaryColor,
-                                size: 24,
+                                size: 22,
                               )
                             : Icon(
                                 Icons.home_outlined,
-                                color: Theme.of(context)
-                                    .focusColor
-                                    .withOpacity(0.3),
-                                size: 22,
+                                color: Get.theme.focusColor.withOpacity(0.3),
+                                size: 20,
                               ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: Text(
+                        Text(
                           "Home".tr,
                           style: content.whichPage.value == "HomeScreen"
-                              ? Theme.of(context).textTheme.bodySmall!.copyWith(
+                              ? Get.textTheme.bodySmall!.copyWith(
                                   color: primaryColor,
-                                  fontWeight: FontWeight.bold)
-                              : Theme.of(context).textTheme.bodySmall!.copyWith(
-                                  color: Theme.of(context)
-                                      .focusColor
-                                      .withOpacity(0.4)),
-                        ),
-                      )
-                    ],
+                                  fontWeight: FontWeight.w500)
+                              : Get.textTheme.bodySmall!.copyWith(
+                                  color: Get.theme.focusColor.withOpacity(0.4)),
+                        )
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    content.whichPage.value = "Reservations";
-                  },
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        flex: 2,
-                        child: content.whichPage.value == "Reservations"
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      content.whichPage.value = "Reservations";
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        content.whichPage.value == "Reservations"
                             ? Icon(
                                 Icons.departure_board,
                                 color: primaryColor,
-                                size: 24,
+                                size: 22,
                               )
                             : Icon(
                                 Icons.departure_board_outlined,
-                                color: Theme.of(context)
-                                    .focusColor
-                                    .withOpacity(0.3),
-                                size: 22,
+                                color: Get.theme.focusColor.withOpacity(0.3),
+                                size: 20,
                               ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: Text(
+                        Text(
                           "Reservations".tr,
                           style: content.whichPage.value == "Reservations"
-                              ? Theme.of(context).textTheme.bodySmall!.copyWith(
+                              ? Get.textTheme.bodySmall!.copyWith(
                                   color: primaryColor,
-                                  fontWeight: FontWeight.bold)
-                              : Theme.of(context).textTheme.bodySmall!.copyWith(
-                                  color: Theme.of(context)
-                                      .focusColor
-                                      .withOpacity(0.4)),
-                        ),
-                      )
-                    ],
+                                  fontWeight: FontWeight.w500)
+                              : Get.textTheme.bodySmall!.copyWith(
+                                  color: Get.theme.focusColor.withOpacity(0.4)),
+                        )
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    content.whichPage.value = "Cars";
-                  },
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        flex: 2,
-                        child: content.whichPage.value == "Cars"
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      content.whichPage.value = "Cars";
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        content.whichPage.value == "Cars"
                             ? Icon(
                                 Icons.car_rental,
                                 color: primaryColor,
-                                size: 24,
+                                size: 22,
                               )
                             : Icon(
                                 Icons.car_rental_outlined,
-                                color: Theme.of(context)
-                                    .focusColor
-                                    .withOpacity(0.3),
-                                size: 22,
+                                color: Get.theme.focusColor.withOpacity(0.3),
+                                size: 20,
                               ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: Text(
+                        Text(
                           "Cars".tr,
                           style: content.whichPage.value == "Cars"
-                              ? Theme.of(context).textTheme.bodySmall!.copyWith(
+                              ? Get.textTheme.bodySmall!.copyWith(
                                   color: primaryColor,
-                                  fontWeight: FontWeight.bold)
-                              : Theme.of(context).textTheme.bodySmall!.copyWith(
-                                  color: Theme.of(context)
-                                      .focusColor
-                                      .withOpacity(0.4)),
-                        ),
-                      )
-                    ],
+                                  fontWeight: FontWeight.w500)
+                              : Get.textTheme.bodySmall!.copyWith(
+                                  color: Get.theme.focusColor.withOpacity(0.4)),
+                        )
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    content.whichPage.value = "Profile";
-                  },
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        flex: 2,
-                        child: content.whichPage.value == "Profile"
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      content.whichPage.value = "Profile";
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        content.whichPage.value == "Profile"
                             ? Icon(
                                 Icons.person,
                                 color: primaryColor,
-                                size: 24,
+                                size: 22,
                               )
                             : Icon(
                                 Icons.person_outline,
-                                color: Theme.of(context)
-                                    .focusColor
-                                    .withOpacity(0.3),
-                                size: 22,
+                                color: Get.theme.focusColor.withOpacity(0.3),
+                                size: 20,
                               ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: Text(
+                        Text(
                           "Profile".tr,
                           style: content.whichPage.value == "Profile"
-                              ? Theme.of(context).textTheme.bodySmall!.copyWith(
+                              ? Get.textTheme.bodySmall!.copyWith(
                                   color: primaryColor,
-                                  fontWeight: FontWeight.bold)
-                              : Theme.of(context).textTheme.bodySmall!.copyWith(
-                                  color: Theme.of(context)
-                                      .focusColor
-                                      .withOpacity(0.4)),
-                        ),
-                      )
-                    ],
+                                  fontWeight: FontWeight.w500)
+                              : Get.textTheme.bodySmall!.copyWith(
+                                  color: Get.theme.focusColor.withOpacity(0.4)),
+                        )
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
+              ],
+            ),
+          ],
         ),
       ),
     );

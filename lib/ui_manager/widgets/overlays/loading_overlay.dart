@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../../ui_manager/colors_manager.dart';
 import '../../fixed_numbers_manager.dart';
 
@@ -12,7 +13,7 @@ class LoadingOverlay extends StatelessWidget {
     return Container(
       height: height,
       width: width,
-      color: Theme.of(context).focusColor.withOpacity(0.3),
+      color: Get.theme.focusColor.withOpacity(0.3),
       alignment: Alignment.center,
       child: Container(
         height: 90,

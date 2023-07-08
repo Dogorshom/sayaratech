@@ -75,7 +75,7 @@ class SignUpScreen extends StatelessWidget {
                             authenticationVars.phoneNumberController.value,
                         keyboardType: TextInputType.phone,
                         decoration: InputDecoration(
-                            hintText: "Phone Number".tr,
+                            hintText: "Phone Number ex: 5xxxxxxxx".tr,
                             prefixIcon: Icon(
                               Icons.phone_outlined,
                               color: secondaryColor,
