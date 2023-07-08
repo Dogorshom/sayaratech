@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import '../../../../ui_manager/colors_manager.dart';
 import '../../fixed_numbers_manager.dart';
 
